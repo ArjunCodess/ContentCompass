@@ -574,10 +574,39 @@ Return ONLY valid JSON, no markdown."""
                         if st.button("📋 Copy", key=f"copy_idea_{idx}", use_container_width=True):
                             copy_to_clipboard(f"{idea.get('day', '')}: {idea.get('video_idea', '')}\n{tag_str}")
         
-        if st.button("🗑️ Clear Plan", use_container_width=True):
-            st.session_state.weekly_plan = None
-            save_cache_to_file()
-            st.rerun()
+        st.divider()
+        
+        # Export entire plan
+        plan_text = f"WEEKLY CONTENT PLAN\nNiche: {plan.get('niche', 'General')} | Platform: {plan.get('platform', 'TikTok')}\n\n"
+        for idea in ideas:
+            hashtags = idea.get('hashtags', [])
+            tag_str = " ".join(hashtags) if isinstance(hashtags, list) else str(hashtags)
+            plan_text += f"""=== {idea.get('day', '')} ===
+Trend: {idea.get('trend', '')}
+Idea: {idea.get('video_idea', '')}
+Hook: {idea.get('hook', '')}
+Hashtags: {tag_str}
+Difficulty: {idea.get('difficulty', '')} | Best Time: {idea.get('best_time', '')}
+
+"""
+        
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.download_button(
+                "📄 Download Plan (.txt)",
+                plan_text,
+                file_name=f"weekly_plan_{plan.get('niche', 'content').replace(' ', '_')}.txt",
+                mime="text/plain",
+                use_container_width=True
+            )
+        with col2:
+            if st.button("📋 Copy All", use_container_width=True):
+                copy_to_clipboard(plan_text)
+        with col3:
+            if st.button("🗑️ Clear Plan", use_container_width=True):
+                st.session_state.weekly_plan = None
+                save_cache_to_file()
+                st.rerun()
     else:
         st.info("👆 Enter your niche and click 'Generate My Week'")
 
