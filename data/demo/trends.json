@@ -2,162 +2,130 @@
   "results": 1,
   "data": [
     {
-      "id": "demo-trend-group-001",
-      "title": "Trends for Today",
+      "id": "2e21d0f0-7498-4d23-9ff7-cf543945881d",
+      "title": "Trends for Jan 7",
       "trends": [
         {
-          "id": "trend-001",
-          "trend_id": "t-001",
-          "trend_group_id": "demo-trend-group-001",
+          "id": "cea4e6f0-545e-4c66-ae8a-f87df6005a41",
+          "trend_id": "4c231573-dfe0-43fb-bd60-f7e48aa988fa",
+          "trend_group_id": "2e21d0f0-7498-4d23-9ff7-cf543945881d",
           "ranking": 1,
           "trend": {
-            "id": "t-001",
-            "name": "AI Reaction Videos",
-            "description": "Creators are reacting to AI-generated content, from hilarious fails to mind-blowing creations. This format combines tech curiosity with entertainment value.",
+            "id": "4c231573-dfe0-43fb-bd60-f7e48aa988fa",
+            "name": "Nicolas Maduro Captured",
+            "description": "The recent capture of Venezuelan President Nicolas Maduro by U.S. forces has sparked widespread discussion and reactions across social media. This event is significant as it raises questions about U.S. involvement in Venezuela and its implications for international relations. Content creators are reacting to the unfolding drama and sharing their thoughts on the potential consequences.",
             "trend_type": "content"
-          },
-          "growth_percent": 234,
-          "views_24h": 2300000,
-          "status": "hot"
+          }
         },
         {
-          "id": "trend-002",
-          "trend_id": "t-002",
-          "trend_group_id": "demo-trend-group-001",
+          "id": "7c21ef7e-c599-49dd-9dd7-ff96a86b6f39",
+          "trend_id": "3ed37466-ce0f-4cec-90b1-42edd141ed52",
+          "trend_group_id": "2e21d0f0-7498-4d23-9ff7-cf543945881d",
           "ranking": 2,
           "trend": {
-            "id": "t-002",
-            "name": "Dance Challenge Revival",
-            "description": "Classic dance challenges are making a comeback with modern twists. Creators are remixing iconic moves with current songs.",
+            "id": "3ed37466-ce0f-4cec-90b1-42edd141ed52",
+            "name": "Stranger Things 5 Hype",
+            "description": "The anticipation for Stranger Things 5 is building, with fans sharing their theories and excitement on social media. Content creators are reacting to trailers and discussing potential plotlines, making it a hot topic for commentary and discussions.",
             "trend_type": "content"
-          },
-          "growth_percent": 12,
-          "views_24h": 5600000,
-          "status": "stable"
+          }
         },
         {
-          "id": "trend-003",
-          "trend_id": "t-003",
-          "trend_group_id": "demo-trend-group-001",
+          "id": "e79c7aeb-5d6b-4aa0-a0a6-420196cdf571",
+          "trend_id": "1b71f432-de72-4218-a192-7443b1b71b5c",
+          "trend_group_id": "2e21d0f0-7498-4d23-9ff7-cf543945881d",
           "ranking": 3,
           "trend": {
-            "id": "t-003",
-            "name": "Tech Satire Skits",
-            "description": "Comedy sketches poking fun at tech culture, startup life, and Silicon Valley stereotypes are resonating with audiences.",
+            "id": "1b71f432-de72-4218-a192-7443b1b71b5c",
+            "name": "Cam Little's 67-Yard Field Goal",
+            "description": "Cam Little's impressive 67-yard field goal has gone viral, with fans reacting to the incredible feat. Content creators are sharing their thoughts on the kick and its significance in the NFL, making it a trending topic.",
             "trend_type": "content"
-          },
-          "growth_percent": 156,
-          "views_24h": 234000,
-          "status": "emerging"
+          }
         },
         {
-          "id": "trend-004",
-          "trend_id": "t-004",
-          "trend_group_id": "demo-trend-group-001",
+          "id": "f82e7d6b-3abc-4bba-a688-985bcb1dd310",
+          "trend_id": "ecc59e6b-0e81-4004-9ee5-9b6a822a8c7f",
+          "trend_group_id": "2e21d0f0-7498-4d23-9ff7-cf543945881d",
           "ranking": 4,
           "trend": {
-            "id": "t-004",
-            "name": "GRWM Storytimes",
-            "description": "Get Ready With Me videos combined with dramatic storytelling are dominating. Authentic, unfiltered content performs best.",
+            "id": "ecc59e6b-0e81-4004-9ee5-9b6a822a8c7f",
+            "name": "Ruben Amorim Sacked by Manchester United",
+            "description": "The recent sacking of Ruben Amorim as head coach of Manchester United has sent shockwaves through the football community. Fans are reacting to the news, discussing the implications for the team and potential replacements, making it a hot topic for commentary and reaction videos.",
             "trend_type": "content"
-          },
-          "growth_percent": 89,
-          "views_24h": 1800000,
-          "status": "stable"
+          }
         },
         {
-          "id": "trend-005",
-          "trend_id": "t-005",
-          "trend_group_id": "demo-trend-group-001",
+          "id": "79df70fe-22b9-4349-a69a-407e2220a113",
+          "trend_id": "aaf5763b-386d-4792-b84a-413d07a3832e",
+          "trend_group_id": "2e21d0f0-7498-4d23-9ff7-cf543945881d",
           "ranking": 5,
           "trend": {
-            "id": "t-005",
-            "name": "Day in My Life: Remote Worker Edition",
-            "description": "Work-from-home lifestyle content showing productive routines, home office setups, and the reality of remote work.",
+            "id": "aaf5763b-386d-4792-b84a-413d07a3832e",
+            "name": "ASAP Rocky's New Single",
+            "description": "ASAP Rocky has dropped a new single titled 'Punk Rocky', which has fans buzzing with excitement. The release is generating a lot of reactions and discussions about the song's themes and the accompanying music video, making it a prime topic for commentary and reaction videos.",
             "trend_type": "content"
-          },
-          "growth_percent": 67,
-          "views_24h": 920000,
-          "status": "stable"
+          }
         },
         {
-          "id": "trend-006",
-          "trend_id": "t-006",
-          "trend_group_id": "demo-trend-group-001",
+          "id": "d9c375d3-eb64-4939-83ec-0e667b3d0fa4",
+          "trend_id": "323405e1-2c8e-438f-9a8b-37db693229ba",
+          "trend_group_id": "2e21d0f0-7498-4d23-9ff7-cf543945881d",
           "ranking": 6,
           "trend": {
-            "id": "t-006",
-            "name": "Cooking with Chaos",
-            "description": "Chaotic cooking videos where things go wrong (sometimes intentionally) are outperforming polished recipe content.",
+            "id": "323405e1-2c8e-438f-9a8b-37db693229ba",
+            "name": "Kendrick Lamar's Diamond Certification",
+            "description": "Kendrick Lamar's album 'good kid, m.A.A.d city' is now eligible for diamond certification, marking a significant milestone in his career. Fans are celebrating this achievement and discussing its impact on his legacy, making it a great topic for reaction videos and commentary.",
             "trend_type": "content"
-          },
-          "growth_percent": 178,
-          "views_24h": 456000,
-          "status": "emerging"
+          }
         },
         {
-          "id": "trend-007",
-          "trend_id": "t-007",
-          "trend_group_id": "demo-trend-group-001",
+          "id": "f6eed7ed-5fbe-40c7-b181-4c862ae72653",
+          "trend_id": "0a0c1fc5-6224-4d87-9aee-8773be5b698c",
+          "trend_group_id": "2e21d0f0-7498-4d23-9ff7-cf543945881d",
           "ranking": 7,
           "trend": {
-            "id": "t-007",
-            "name": "Book Reviews TikTok Style",
-            "description": "BookTok continues strong with quick, emotional book reviews and recommendations driving massive engagement.",
+            "id": "0a0c1fc5-6224-4d87-9aee-8773be5b698c",
+            "name": "Trae Young Trade Rumors",
+            "description": "Rumors are swirling around Trae Young's potential trade from the Atlanta Hawks, with fans speculating about his future and the implications for the team. This topic is generating a lot of buzz and is ripe for reaction videos and discussions.",
             "trend_type": "content"
-          },
-          "growth_percent": 45,
-          "views_24h": 780000,
-          "status": "stable"
+          }
         },
         {
-          "id": "trend-008",
-          "trend_id": "t-008",
-          "trend_group_id": "demo-trend-group-001",
-          "ranking": 8,
-          "trend": {
-            "id": "t-008",
-            "name": "Pet Reaction Compilations",
-            "description": "Pets reacting to sounds, other animals, or their owners' antics. Simple but highly shareable content format.",
-            "trend_type": "content"
-          },
-          "growth_percent": 23,
-          "views_24h": 3400000,
-          "status": "stable"
-        },
-        {
-          "id": "trend-009",
-          "trend_id": "t-009",
-          "trend_group_id": "demo-trend-group-001",
+          "id": "23a0418c-8759-4a4d-b688-2e7ff9bd5d7b",
+          "trend_id": "43a07796-8651-4512-974b-eede83946e44",
+          "trend_group_id": "2e21d0f0-7498-4d23-9ff7-cf543945881d",
           "ranking": 9,
           "trend": {
-            "id": "t-009",
-            "name": "Mini Vlog Format",
-            "description": "Ultra-short vlogs (under 60 seconds) capturing a single moment or activity. Low effort, high authenticity.",
-            "trend_type": "format"
-          },
-          "growth_percent": 112,
-          "views_24h": 567000,
-          "status": "emerging"
+            "id": "43a07796-8651-4512-974b-eede83946e44",
+            "name": "Lamar Jackson's Emotional Moment",
+            "description": "Lamar Jackson's emotional moment after a tough game has resonated with fans, sparking discussions about his performance and the team's future. This moment is generating reactions and commentary, making it a relevant topic for content creators.",
+            "trend_type": "content"
+          }
         },
         {
-          "id": "trend-010",
-          "trend_id": "t-010",
-          "trend_group_id": "demo-trend-group-001",
+          "id": "18cfe7f1-f597-40b3-afbc-2d9e0d8c7428",
+          "trend_id": "dc23c95c-d784-41ef-aba5-d19d1c7cd9f7",
+          "trend_group_id": "2e21d0f0-7498-4d23-9ff7-cf543945881d",
           "ranking": 10,
           "trend": {
-            "id": "t-010",
-            "name": "POV Drama Series",
-            "description": "Multi-part POV storytelling with cliffhangers keeping audiences coming back. Serialized content strategy working well.",
-            "trend_type": "format"
-          },
-          "growth_percent": 201,
-          "views_24h": 890000,
-          "status": "hot"
+            "id": "dc23c95c-d784-41ef-aba5-d19d1c7cd9f7",
+            "name": "New Year, New Trends",
+            "description": "As the new year begins, various trends are emerging on social media, including new slang and viral challenges. Content creators are discussing these trends and how they reflect the current cultural landscape, making it a relevant topic for commentary and reaction videos.",
+            "trend_type": "content"
+          }
+        },
+        {
+          "id": "5f28264c-e48f-42b6-9e28-692876a6a481",
+          "trend_id": "45d3eeb6-bd1b-4e1d-b29e-73c912e285c8",
+          "trend_group_id": "2e21d0f0-7498-4d23-9ff7-cf543945881d",
+          "ranking": 11,
+          "trend": {
+            "id": "45d3eeb6-bd1b-4e1d-b29e-73c912e285c8",
+            "name": "Celebrity Drama: Cardi B",
+            "description": "Cardi B's recent response to false claims about her family has sparked discussions among fans and followers. This drama is generating reactions and commentary, making it a hot topic for content creators.",
+            "trend_type": "content"
+          }
         }
       ]
     }
-  ],
-  "snapshot_date": "2026-01-06",
-  "is_demo": true
+  ]
 }

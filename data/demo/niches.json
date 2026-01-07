@@ -1,209 +1,305 @@
 {
-  "results": 68,
+  "results": 75,
   "data": [
     {
       "id": "motivational",
-      "label": "Motivational",
-      "status": "stable",
-      "growth": 15
+      "label": "Motivational"
     },
     {
       "id": "reddit-stories",
-      "label": "Reddit Stories",
-      "status": "stable",
-      "growth": 28
+      "label": "Reddit Stories"
     },
     {
       "id": "basketball",
-      "label": "Basketball",
-      "status": "stable",
-      "growth": 12
-    },
-    { "id": "crypto", "label": "Crypto", "status": "emerging", "growth": 145 },
-    { "id": "finance", "label": "Finance", "status": "stable", "growth": 34 },
-    { "id": "anime", "label": "Anime", "status": "stable", "growth": 56 },
-    { "id": "gaming", "label": "Gaming", "status": "stable", "growth": 42 },
-    {
-      "id": "formula-one",
-      "label": "Formula One",
-      "status": "stable",
-      "growth": 38
+      "label": "Basketball"
     },
     {
-      "id": "us-politics",
-      "label": "US Politics",
-      "status": "cooling",
-      "growth": -12
+      "id": "real-estate",
+      "label": "Real Estate"
+    },
+    {
+      "id": "crypto",
+      "label": "Crypto"
+    },
+    {
+      "id": "finance",
+      "label": "Finance"
+    },
+    {
+      "id": "chat-message-stories",
+      "label": "Chat Message Stories"
+    },
+    {
+      "id": "history",
+      "label": "History"
+    },
+    {
+      "id": "quiz",
+      "label": "Quiz"
+    },
+    {
+      "id": "relationships",
+      "label": "Relationships"
+    },
+    {
+      "id": "food+drink",
+      "label": "Food&Drink"
+    },
+    {
+      "id": "animals",
+      "label": "Animals"
+    },
+    {
+      "id": "educational",
+      "label": "Educational"
+    },
+    {
+      "id": "music-(singing)",
+      "label": "Music (Singing)"
     },
     {
       "id": "horror-scary",
-      "label": "Horror & Scary",
-      "status": "stable",
-      "growth": 45
+      "label": "Horror/Scary"
     },
     {
-      "id": "brainrot",
-      "label": "Brainrot",
-      "status": "emerging",
-      "growth": 234
+      "id": "storytelling",
+      "label": "Storytelling"
     },
     {
-      "id": "celebrities",
-      "label": "Celebrities",
-      "status": "stable",
-      "growth": 23
+      "id": "fitness",
+      "label": "Fitness"
     },
     {
-      "id": "ai-vlogs",
-      "label": "AI Vlogs",
-      "status": "emerging",
-      "growth": 312
+      "id": "geography",
+      "label": "Geography"
+    },
+    {
+      "id": "travel",
+      "label": "Travel"
+    },
+    {
+      "id": "lifestyle",
+      "label": "Lifestyle"
+    },
+    {
+      "id": "gaming",
+      "label": "Gaming"
+    },
+    {
+      "id": "ranking-content",
+      "label": "Ranking Content"
     },
     {
       "id": "podcast-clips",
-      "label": "Podcast Clips",
-      "status": "stable",
-      "growth": 67
-    },
-    { "id": "asmr", "label": "ASMR", "status": "stable", "growth": 18 },
-    { "id": "beauty", "label": "Beauty", "status": "stable", "growth": 25 },
-    { "id": "fitness", "label": "Fitness", "status": "stable", "growth": 34 },
-    {
-      "id": "food",
-      "label": "Food & Cooking",
-      "status": "stable",
-      "growth": 29
-    },
-    { "id": "travel", "label": "Travel", "status": "stable", "growth": 38 },
-    { "id": "comedy", "label": "Comedy", "status": "stable", "growth": 15 },
-    { "id": "music", "label": "Music", "status": "stable", "growth": 25 },
-    { "id": "dance", "label": "Dance", "status": "stable", "growth": 12 },
-    {
-      "id": "diy-crafts",
-      "label": "DIY & Crafts",
-      "status": "stable",
-      "growth": 52
+      "label": "Podcast Content"
     },
     {
-      "id": "pets",
-      "label": "Pets & Animals",
-      "status": "stable",
-      "growth": 23
+      "id": "soccer-clips",
+      "label": "Soccer Clips"
     },
     {
-      "id": "tech-review",
-      "label": "Tech Reviews",
-      "status": "emerging",
-      "growth": 89
+      "id": "religion",
+      "label": "Religion"
     },
     {
-      "id": "education",
-      "label": "Education",
-      "status": "stable",
-      "growth": 45
+      "id": "anime",
+      "label": "Anime"
     },
     {
-      "id": "true-crime",
-      "label": "True Crime",
-      "status": "cooling",
-      "growth": -8
+      "id": "clipping",
+      "label": "Clipping"
     },
-    { "id": "fashion", "label": "Fashion", "status": "stable", "growth": 19 },
-    { "id": "sports", "label": "Sports", "status": "stable", "growth": 32 },
     {
-      "id": "parenting",
-      "label": "Parenting",
-      "status": "stable",
-      "growth": 28
+      "id": "brainrot",
+      "label": "Brainrot"
+    },
+    {
+      "id": "skits",
+      "label": "Skits"
+    },
+    {
+      "id": "celebrities",
+      "label": "Celebrities"
+    },
+    {
+      "id": "ai-vlogs",
+      "label": "AI Vlogs"
+    },
+    {
+      "id": "movies-tv",
+      "label": "Movies & TV"
+    },
+    {
+      "id": "cars",
+      "label": "Cars "
+    },
+    {
+      "id": "e-commerce",
+      "label": "E-commerce"
+    },
+    {
+      "id": "golf",
+      "label": "Golf"
+    },
+    {
+      "id": "asmr",
+      "label": "ASMR"
+    },
+    {
+      "id": "info-products",
+      "label": "Info Products"
+    },
+    {
+      "id": "health-and-wellness",
+      "label": "Health & Wellness"
+    },
+    {
+      "id": "padel",
+      "label": "Padel"
+    },
+    {
+      "id": "coding",
+      "label": "Coding"
+    },
+    {
+      "id": "nfl",
+      "label": "NFL"
+    },
+    {
+      "id": "poker",
+      "label": "Poker"
+    },
+    {
+      "id": "art",
+      "label": "Art"
+    },
+    {
+      "id": "cooking-and-baking",
+      "label": "Cooking & Baking"
+    },
+    {
+      "id": "roblox",
+      "label": "Roblox"
+    },
+    {
+      "id": "fishing-and-hunting",
+      "label": "Fishing & Hunting"
+    },
+    {
+      "id": "chess",
+      "label": "Chess"
+    },
+    {
+      "id": "technology",
+      "label": "Technology"
+    },
+    {
+      "id": "fashion",
+      "label": "Fashion"
+    },
+    {
+      "id": "vlogs",
+      "label": "Vlog Content"
+    },
+    {
+      "id": "books",
+      "label": "Books"
+    },
+    {
+      "id": "supplements",
+      "label": "Supplements"
+    },
+    {
+      "id": "usa-reality-tv",
+      "label": "USA Reality TV"
+    },
+    {
+      "id": "sports-celebrations",
+      "label": "Sports Celebrations"
+    },
+    {
+      "id": "bodycam",
+      "label": "Bodycam Footage"
+    },
+    {
+      "id": "news",
+      "label": "News"
+    },
+    {
+      "id": "formula-one",
+      "label": "Formula One"
+    },
+    {
+      "id": "minecraft",
+      "label": "Minecraft"
+    },
+    {
+      "id": "etsy-products",
+      "label": "Etsy Products"
+    },
+    {
+      "id": "us-politics",
+      "label": "US Politics"
+    },
+    {
+      "id": "forex-and-options",
+      "label": "Forex and Options"
+    },
+    {
+      "id": "affiliate-marketing",
+      "label": "Affiliate Marketing"
+    },
+    {
+      "id": "ai-tools",
+      "label": "AI Tools"
+    },
+    {
+      "id": "beauty",
+      "label": "Beauty"
+    },
+    {
+      "id": "aviation",
+      "label": "Aviation"
+    },
+    {
+      "id": "us-popculture",
+      "label": "USA Popculture"
+    },
+    {
+      "id": "hot-ecomm-products",
+      "label": "Hot Ecommerce Products"
+    },
+    {
+      "id": "music-production-songwriting",
+      "label": "Music Production and Songwriting"
+    },
+    {
+      "id": "memes",
+      "label": "Memes"
+    },
+    {
+      "id": "ufc",
+      "label": "UFC"
+    },
+    {
+      "id": "clash-royale",
+      "label": "Clash Royale"
+    },
+    {
+      "id": "contracting",
+      "label": "contractors"
+    },
+    {
+      "id": "boxing",
+      "label": "Boxing"
+    },
+    {
+      "id": "baseball",
+      "label": "Baseball"
+    },
+    {
+      "id": "fortnite",
+      "label": "Fortnite"
     }
-  ],
-  "niche_trends": {
-    "ai-vlogs": [
-      {
-        "trend_name": "AI-Generated Story Vlogs",
-        "trend_description": "Creators are using AI video generators like Veo 3 to create cinematic story vlogs with AI avatars.",
-        "average_views": 890000
-      },
-      {
-        "trend_name": "Day in the Life of AI Characters",
-        "trend_description": "Fictional AI characters living normal lives, created entirely with generative AI tools.",
-        "average_views": 456000
-      },
-      {
-        "trend_name": "AI vs Human Art Comparisons",
-        "trend_description": "Side-by-side comparisons of AI-generated art vs human-created content, sparking debates.",
-        "average_views": 234000
-      }
-    ],
-    "crypto": [
-      {
-        "trend_name": "Bitcoin ETF Analysis",
-        "trend_description": "Deep dives into Bitcoin ETF performance and predictions for 2026.",
-        "average_views": 567000
-      },
-      {
-        "trend_name": "Altcoin Season Predictions",
-        "trend_description": "Technical analysis predicting which altcoins will outperform in the next bull run.",
-        "average_views": 345000
-      },
-      {
-        "trend_name": "DeFi Yield Strategies",
-        "trend_description": "Step-by-step guides on maximizing yields in decentralized finance protocols.",
-        "average_views": 189000
-      }
-    ],
-    "brainrot": [
-      {
-        "trend_name": "Skibidi Toilet Lore Deep Dives",
-        "trend_description": "Serious analysis of Skibidi Toilet storylines and character developments.",
-        "average_views": 1200000
-      },
-      {
-        "trend_name": "Italian Chaos Compilations",
-        "trend_description": "Chaotic Italian-themed content with absurd humor and unexpected twists.",
-        "average_views": 890000
-      },
-      {
-        "trend_name": "Sigma Edits with Ridiculous Music",
-        "trend_description": "Over-the-top sigma male edits set to increasingly absurd music choices.",
-        "average_views": 678000
-      }
-    ],
-    "anime": [
-      {
-        "trend_name": "Demon Slayer Character Analysis",
-        "trend_description": "In-depth character breakdowns and power scaling discussions.",
-        "average_views": 456000
-      },
-      {
-        "trend_name": "Anime Cosplay Transformations",
-        "trend_description": "Before/after cosplay transformation videos showcasing detailed costumes.",
-        "average_views": 345000
-      },
-      {
-        "trend_name": "Underrated Anime Recommendations",
-        "trend_description": "Hidden gem anime recommendations that deserve more attention.",
-        "average_views": 234000
-      }
-    ],
-    "tech-review": [
-      {
-        "trend_name": "AI Tool Reviews and Tutorials",
-        "trend_description": "Reviews and tutorials for the latest AI productivity and creative tools.",
-        "average_views": 567000
-      },
-      {
-        "trend_name": "Tech Satire and Parodies",
-        "trend_description": "Comedy content poking fun at tech culture and Silicon Valley stereotypes.",
-        "average_views": 890000
-      },
-      {
-        "trend_name": "Budget Tech Alternatives",
-        "trend_description": "Finding affordable alternatives to expensive tech products.",
-        "average_views": 345000
-      }
-    ]
-  },
-  "snapshot_date": "2026-01-06",
-  "is_demo": true
+  ]
 }

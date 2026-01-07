@@ -2,65 +2,76 @@
   "ideas": [
     {
       "day": "Monday",
-      "trend": "AI Reaction Videos",
-      "growth": "+234%",
-      "video_idea": "React to AI's funniest fails with your confused reaction faces",
-      "hook": "Wait... is that actually AI? 🤯",
-      "hashtag_set": ["#AIFails", "#TechComedy", "#AIReaction", "#TechSatire"],
-      "hashtag_type": "Hidden Gem",
-      "posting_time": "14:00 UTC",
-      "difficulty": "Easy"
+      "trend": "Nicolas Maduro Captured",
+      "description": "The recent capture of Venezuelan President Nicolas Maduro by U.S. forces has sparked widespread discussion and reactions across social media. This event is significant as it raises questions about U.S. involvement in Venezuela and its implications for international relations. Content creators are reacting to the unfolding drama and sharing their thoughts on the potential consequences.",
+      "video_idea": "Create a video about Nicolas Maduro Captured",
+      "hook": "POV: You just discovered Nicolas Maduro Captured...",
+      "hashtags": [
+        "#fyp",
+        "#viral",
+        "#nicolasmaduroca"
+      ],
+      "difficulty": "Easy",
+      "best_time": "14:00 UTC"
     },
     {
       "day": "Tuesday",
-      "trend": "Tech Satire Skits",
-      "growth": "+156%",
-      "video_idea": "POV: You're in a startup meeting where everyone speaks in buzzwords",
-      "hook": "Let's circle back and synergize our bandwidth...",
-      "hashtag_set": ["#TechSatire", "#StartupLife", "#Comedy", "#Corporate"],
-      "hashtag_type": "Aggressive",
-      "posting_time": "15:00 UTC",
-      "difficulty": "Medium"
+      "trend": "Stranger Things 5 Hype",
+      "description": "The anticipation for Stranger Things 5 is building, with fans sharing their theories and excitement on social media. Content creators are reacting to trailers and discussing potential plotlines, making it a hot topic for commentary and discussions.",
+      "video_idea": "Create a video about Stranger Things 5 Hype",
+      "hook": "POV: You just discovered Stranger Things 5 Hype...",
+      "hashtags": [
+        "#fyp",
+        "#viral",
+        "#strangerthings5"
+      ],
+      "difficulty": "Medium",
+      "best_time": "15:00 UTC"
     },
     {
       "day": "Wednesday",
-      "trend": "POV Drama Series",
-      "growth": "+201%",
-      "video_idea": "Start a 3-part POV series about a workplace drama with a cliffhanger",
-      "hook": "They thought I didn't hear them, but I heard everything...",
-      "hashtag_set": ["#POVDrama", "#Series", "#Acting", "#Storytime"],
-      "hashtag_type": "Safe",
-      "posting_time": "18:00 UTC",
-      "difficulty": "Medium"
+      "trend": "Cam Little's 67-Yard Field Goal",
+      "description": "Cam Little's impressive 67-yard field goal has gone viral, with fans reacting to the incredible feat. Content creators are sharing their thoughts on the kick and its significance in the NFL, making it a trending topic.",
+      "video_idea": "Create a video about Cam Little's 67-Yard Field Goal",
+      "hook": "POV: You just discovered Cam Little's 67-Yard Field Goal...",
+      "hashtags": [
+        "#fyp",
+        "#viral",
+        "#camlittle's67-y"
+      ],
+      "difficulty": "Hard",
+      "best_time": "16:00 UTC"
     },
     {
       "day": "Thursday",
-      "trend": "Cooking with Chaos",
-      "growth": "+178%",
-      "video_idea": "Try to cook a viral recipe but let the chaos unfold naturally",
-      "hook": "This should be easy... right?",
-      "hashtag_set": ["#CookingFail", "#ChaoticCooking", "#Food", "#Viral"],
-      "hashtag_type": "Hidden Gem",
-      "posting_time": "12:00 UTC",
-      "difficulty": "Easy"
+      "trend": "Ruben Amorim Sacked by Manchester United",
+      "description": "The recent sacking of Ruben Amorim as head coach of Manchester United has sent shockwaves through the football community. Fans are reacting to the news, discussing the implications for the team and potential replacements, making it a hot topic for commentary and reaction videos.",
+      "video_idea": "Create a video about Ruben Amorim Sacked by Manchester United",
+      "hook": "POV: You just discovered Ruben Amorim Sacked by Manchester United...",
+      "hashtags": [
+        "#fyp",
+        "#viral",
+        "#rubenamorimsack"
+      ],
+      "difficulty": "Easy",
+      "best_time": "17:00 UTC"
     },
     {
       "day": "Friday",
-      "trend": "Mini Vlog Format",
-      "growth": "+112%",
-      "video_idea": "Capture the best 60 seconds of your week in an aesthetic mini vlog",
-      "hook": "This week in 60 seconds ✨",
-      "hashtag_set": ["#MiniVlog", "#WeekInMyLife", "#Aesthetic", "#Lifestyle"],
-      "hashtag_type": "Safe",
-      "posting_time": "16:00 UTC",
-      "difficulty": "Easy"
+      "trend": "ASAP Rocky's New Single",
+      "description": "ASAP Rocky has dropped a new single titled 'Punk Rocky', which has fans buzzing with excitement. The release is generating a lot of reactions and discussions about the song's themes and the accompanying music video, making it a prime topic for commentary and reaction videos.",
+      "video_idea": "Create a video about ASAP Rocky's New Single",
+      "hook": "POV: You just discovered ASAP Rocky's New Single...",
+      "hashtags": [
+        "#fyp",
+        "#viral",
+        "#asaprocky'snews"
+      ],
+      "difficulty": "Medium",
+      "best_time": "14:00 UTC"
     }
   ],
-  "generated_for": {
-    "niche": "Tech & Comedy",
-    "platform": "TikTok",
-    "tone": "Funny"
-  },
-  "snapshot_date": "2026-01-06",
-  "is_demo": true
+  "niche": "General",
+  "platform": "TikTok",
+  "generated_at": "2026-01-07T13:05:01.680900"
 }
