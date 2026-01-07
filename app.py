@@ -732,9 +732,7 @@ Return ONLY valid JSON, no markdown."""
         st.divider()
         
         # Export
-        col1, col2 = st.columns(2)
-        with col1:
-            brief_text = f"""CONTENT BRIEF: {brief['trend_name']}
+        brief_text = f"""CONTENT BRIEF: {brief['trend_name']}
 Niche: {brief['niche']} | Date: {brief['prepared_date']}
 
 WHY THIS TREND
@@ -751,8 +749,11 @@ Safe: {' '.join(s.get('safe_hashtags', [])) if isinstance(s.get('safe_hashtags')
 Aggressive: {' '.join(s.get('aggressive_hashtags', [])) if isinstance(s.get('aggressive_hashtags'), list) else s.get('aggressive_hashtags', '')}
 Gems: {' '.join(s.get('gem_hashtags', [])) if isinstance(s.get('gem_hashtags'), list) else s.get('gem_hashtags', '')}
 """
+        
+        col1, col2, col3 = st.columns(3)
+        with col1:
             st.download_button(
-                "📄 Download Brief (.txt)",
+                "📄 Download Brief",
                 brief_text,
                 file_name=f"brief_{topic.replace(' ', '_')}.txt",
                 mime="text/plain",
@@ -761,11 +762,11 @@ Gems: {' '.join(s.get('gem_hashtags', [])) if isinstance(s.get('gem_hashtags'), 
         with col2:
             if st.button("📋 Copy Brief", use_container_width=True):
                 copy_to_clipboard(brief_text)
-        
-        if st.button("🗑️ Clear Brief", use_container_width=True):
-            st.session_state.generated_brief = None
-            save_cache_to_file()
-            st.rerun()
+        with col3:
+            if st.button("🗑️ Clear Brief", use_container_width=True):
+                st.session_state.generated_brief = None
+                save_cache_to_file()
+                st.rerun()
     else:
         st.info("Enter a topic and generate your brief")
 
