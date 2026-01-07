@@ -1,11 +1,12 @@
 """
 TrendForge - Trend Intelligence & Content Planning
 
-Full-featured app with Virlo API integration, video embeds, and export.
+Full-featured app with Virlo API integration, Gemini AI, video embeds, and export.
 """
 import streamlit as st
 import json
 import requests
+import os
 from pathlib import Path
 from datetime import datetime, timedelta
 from typing import Dict, Any, List, Optional
@@ -32,7 +33,6 @@ if "enabled_endpoints" not in st.session_state:
         "trends": True,
         "hashtags": True,
         "videos": True,
-        "niches": True
     }
 
 # Page config
@@ -51,15 +51,41 @@ CREDIT_COSTS = {
     "trends": 1000,
     "hashtags": 10,
     "videos": 100,
-    "niches": 50,
 }
 
 ENDPOINT_DESCRIPTIONS = {
     "trends": "Today's trending topics",
     "hashtags": "Hashtag analytics & stats", 
     "videos": "Top performing videos",
-    "niches": "Content categories list",
 }
+
+# ==================== GEMINI AI ====================
+def get_gemini_key():
+    """Get Gemini API key from environment"""
+    try:
+        from dotenv import load_dotenv
+        load_dotenv(override=True)
+    except:
+        pass
+    return os.getenv("GEMINI_API_KEY")
+
+def generate_with_ai(prompt: str, fallback: str = "") -> str:
+    """Generate content using Gemini AI"""
+    api_key = get_gemini_key()
+    if not api_key:
+        return fallback
+    
+    try:
+        import google.genai as genai
+        client = genai.Client(api_key=api_key)
+        response = client.models.generate_content(
+            model="gemini-3-flash-preview",
+            contents=prompt
+        )
+        return response.text
+    except Exception as e:
+        st.warning(f"AI generation failed: {e}")
+        return fallback
 
 # ==================== LOCAL STORAGE ====================
 def save_cache_to_file():
@@ -76,7 +102,7 @@ def save_cache_to_file():
         with open(CACHE_FILE, "w", encoding="utf-8") as f:
             json.dump(cache_data, f, indent=2, default=str)
     except Exception:
-        pass  # Silently fail on cache save errors
+        pass
 
 def load_cache_from_file():
     """Load cache from local file on startup"""
@@ -106,11 +132,6 @@ def format_number(num: int) -> str:
         return f"{num / 1_000:.1f}K"
     return str(num)
 
-def format_growth(growth: int) -> str:
-    if growth > 0:
-        return f"+{growth}%"
-    return f"{growth}%"
-
 def load_demo(filename: str) -> Dict:
     filepath = DEMO_DATA_PATH / filename
     if filepath.exists():
@@ -119,7 +140,6 @@ def load_demo(filename: str) -> Dict:
     return {"results": 0, "data": []}
 
 def copy_to_clipboard(text: str):
-    """Show toast for clipboard action"""
     st.toast("📋 Copied!")
 
 # ==================== VIRLO API ====================
@@ -157,20 +177,14 @@ class VirloAPI:
         if niche:
             params["niche"] = niche
         return self._get("/videos/digest", params)
-    
-    def get_niches(self) -> Dict:
-        st.session_state.credits_used += CREDIT_COSTS["niches"]
-        return self._get("/niches")
 
 def get_data(endpoint: str, force_refresh: bool = False, **kwargs) -> Dict:
     """Get data from API (live) or demo files - with caching"""
     cache_key = f"{endpoint}_{json.dumps(kwargs, sort_keys=True)}"
     
-    # Check cache first (unless force refresh)
     if not force_refresh and cache_key in st.session_state.cache:
         return st.session_state.cache[cache_key]
     
-    # Check if endpoint is enabled
     if not st.session_state.enabled_endpoints.get(endpoint, True):
         return {"results": 0, "data": []}
     
@@ -190,21 +204,16 @@ def get_data(endpoint: str, force_refresh: bool = False, **kwargs) -> Dict:
             )
         elif endpoint == "videos":
             data = api.get_videos_digest(kwargs.get("limit", 10), kwargs.get("niche"))
-        elif endpoint == "niches":
-            data = api.get_niches()
         else:
             data = {"results": 0, "data": []}
         
-        # Save to cache and persist
         st.session_state.cache[cache_key] = data
         save_cache_to_file()
     else:
-        # Demo mode
         files = {
             "trends": "trends.json",
             "hashtags": "hashtags.json",
             "videos": "videos.json",
-            "niches": "niches.json",
         }
         data = load_demo(files.get(endpoint, "trends.json"))
         st.session_state.cache[cache_key] = data
@@ -237,17 +246,11 @@ def show_welcome():
         api_key = st.text_input("Virlo API Key", type="password", placeholder="vrl_xxx...")
         st.caption("Get your key from [virlo.ai](https://virlo.ai)")
         
-        # Endpoint selector with credit costs
         st.markdown("**Select endpoints to fetch:**")
-        
         total_cost = 0
         for endpoint, desc in ENDPOINT_DESCRIPTIONS.items():
             cost = CREDIT_COSTS[endpoint]
-            enabled = st.checkbox(
-                f"{desc} (~{cost:,} credits)",
-                value=True,
-                key=f"endpoint_{endpoint}"
-            )
+            enabled = st.checkbox(f"{desc} (~{cost:,} credits)", value=True, key=f"endpoint_{endpoint}")
             st.session_state.enabled_endpoints[endpoint] = enabled
             if enabled:
                 total_cost += cost
@@ -260,27 +263,26 @@ def show_welcome():
             st.session_state.cache = {}
             st.rerun()
 
-# ==================== TREND HUB ====================
+# ==================== TREND HUB (with Hashtag Lab merged) ====================
 def show_trend_hub():
     st.title("📊 Trend Hub")
     
-    data = get_data("trends")
-    trend_groups = data.get("data", [])
+    # Get data
+    trends_data = get_data("trends")
+    trend_groups = trends_data.get("data", [])
     trends = trend_groups[0].get("trends", []) if trend_groups else []
     
-    if not trends:
-        st.warning("No trends available. Try refreshing.")
-        return
+    hashtag_data = get_data("hashtags", limit=50, order_by="views")
+    hashtags = hashtag_data.get("data", [])
     
     # Top stats
     col1, col2, col3, col4 = st.columns(4)
     with col1:
-        st.metric("Total Trends", len(trends))
+        st.metric("Trends", len(trends))
     with col2:
-        st.metric("Credits Used", format_number(st.session_state.credits_used))
+        st.metric("Hashtags", len(hashtags))
     with col3:
-        hot = sum(1 for t in trends if t.get("ranking", 99) <= 3)
-        st.metric("🔥 Top Picks", hot)
+        st.metric("Credits Used", format_number(st.session_state.credits_used))
     with col4:
         mode = "🔴 Live" if st.session_state.mode == "live" else "📊 Demo"
         st.metric("Mode", mode)
@@ -288,180 +290,143 @@ def show_trend_hub():
     st.divider()
     
     # Hero: Top 3 trends
-    st.subheader("🌟 Top Trends")
-    cols = st.columns(3)
-    labels = ["🔥 Hottest", "📈 Rising", "🌪️ Emerging"]
+    if trends:
+        st.subheader("🌟 Top Trends")
+        cols = st.columns(3)
+        labels = ["🔥 Hottest", "📈 Rising", "🌪️ Emerging"]
+        
+        for i, col in enumerate(cols):
+            if i < len(trends):
+                t = trends[i]
+                trend_info = t.get("trend", {})
+                name = trend_info.get("name", "Unknown")
+                desc = trend_info.get("description", "")[:80]
+                
+                with col:
+                    with st.container(border=True):
+                        st.markdown(f"**{labels[i]}**")
+                        st.markdown(f"### {name}")
+                        st.caption(desc + "...")
+        
+        st.divider()
     
-    for i, col in enumerate(cols):
-        if i < len(trends):
-            t = trends[i]
+    # Hashtag Strategies
+    if hashtags:
+        st.subheader("🎯 Hashtag Strategies")
+        
+        safe = hashtags[:4] if len(hashtags) >= 4 else hashtags
+        aggressive = hashtags[4:8] if len(hashtags) >= 8 else hashtags[2:6]
+        gems = hashtags[-4:] if len(hashtags) >= 4 else hashtags
+        
+        cols = st.columns(3)
+        sets = [
+            ("Set A: Safe Play", safe, "Mid competition, stable reach"),
+            ("Set B: Aggressive", aggressive, "High reach, competitive"),
+            ("Set C: Hidden Gems", gems, "Low competition, rising fast"),
+        ]
+        
+        for i, (title, tags, desc) in enumerate(sets):
+            with cols[i]:
+                with st.container(border=True):
+                    st.markdown(f"**{title}**")
+                    tag_str = " ".join([h.get("hashtag", "") for h in tags])
+                    st.code(tag_str)
+                    st.caption(desc)
+                    if st.button("📋 Copy", key=f"copy_set_{i}", use_container_width=True):
+                        copy_to_clipboard(tag_str)
+        
+        st.divider()
+    
+    # All Hashtags
+    if hashtags:
+        st.subheader("📋 All Hashtags")
+        search = st.text_input("Search hashtags", placeholder="Filter...")
+        
+        filtered = hashtags
+        if search:
+            filtered = [h for h in hashtags if search.lower() in h.get("hashtag", "").lower()]
+        
+        cols = st.columns(4)
+        for idx, h in enumerate(filtered[:16]):
+            tag = h.get("hashtag", "")
+            count = h.get("count", 0)
+            views = h.get("total_views", 0)
+            
+            with cols[idx % 4]:
+                with st.container(border=True):
+                    st.markdown(f"**{tag}**")
+                    c1, c2 = st.columns(2)
+                    with c1:
+                        st.caption(f"📊 {format_number(count)}")
+                    with c2:
+                        st.caption(f"👁️ {format_number(views)}")
+                    if st.button("📋 Copy", key=f"copy_tag_{idx}", use_container_width=True):
+                        copy_to_clipboard(tag)
+        
+        st.divider()
+    
+    # All Trends
+    if trends:
+        st.subheader("📋 All Trends")
+        cols = st.columns(4)
+        
+        for idx, t in enumerate(trends):
             trend_info = t.get("trend", {})
             name = trend_info.get("name", "Unknown")
-            desc = trend_info.get("description", "")[:80]
+            desc = trend_info.get("description", "")[:60]
+            ranking = t.get("ranking", idx + 1)
             
-            with col:
+            with cols[idx % 4]:
                 with st.container(border=True):
-                    st.markdown(f"**{labels[i]}**")
-                    st.markdown(f"### {name}")
+                    st.markdown(f"**#{ranking} {name}**")
                     st.caption(desc + "...")
-                    
-                    if st.button("View Details", key=f"hero_{i}", use_container_width=True):
-                        st.toast(f"ℹ️ {name} - Check Video Vault for related content")
-    
-    st.divider()
-    
-    # All trends in 4-column grid
-    st.subheader("📋 All Trends")
-    cols = st.columns(4)
-    
-    for idx, t in enumerate(trends):
-        trend_info = t.get("trend", {})
-        name = trend_info.get("name", "Unknown")
-        desc = trend_info.get("description", "")[:60]
-        ranking = t.get("ranking", idx + 1)
-        
-        with cols[idx % 4]:
-            with st.container(border=True):
-                st.markdown(f"**#{ranking} {name}**")
-                st.caption(desc + "...")
-                if st.button("View Details", key=f"trend_{idx}", use_container_width=True):
-                    st.toast(f"ℹ️ {name} - Check Video Vault for related content")
-
-# ==================== HASHTAG LAB ====================
-def show_hashtag_lab():
-    st.title("🏷️ Hashtag Lab")
-    
-    # Filter controls
-    search = st.text_input("Search hashtags", placeholder="Filter...")
-    
-    data = get_data("hashtags", limit=50, order_by="views")
-    hashtags = data.get("data", [])
-    
-    if search:
-        hashtags = [h for h in hashtags if search.lower() in h.get("hashtag", "").lower()]
-    
-    if not hashtags:
-        st.warning("No hashtags found")
-        return
-    
-    st.divider()
-    
-    # 3 Strategy Sets
-    st.subheader("🎯 Hashtag Strategies")
-    
-    # Split hashtags into 3 sets
-    safe = hashtags[:4] if len(hashtags) >= 4 else hashtags
-    aggressive = hashtags[4:8] if len(hashtags) >= 8 else hashtags[2:6]
-    gems = hashtags[-4:] if len(hashtags) >= 4 else hashtags
-    
-    cols = st.columns(3)
-    
-    sets = [
-        ("Set A: Safe Play", safe, "Mid competition, stable reach"),
-        ("Set B: Aggressive", aggressive, "High reach, competitive"),
-        ("Set C: Hidden Gems", gems, "Low competition, rising fast"),
-    ]
-    
-    for i, (title, tags, desc) in enumerate(sets):
-        with cols[i]:
-            with st.container(border=True):
-                st.markdown(f"**{title}**")
-                tag_str = " ".join([h.get("hashtag", "") for h in tags])
-                st.code(tag_str)
-                st.caption(desc)
-                if st.button("📋 Copy", key=f"copy_set_{i}", use_container_width=True):
-                    copy_to_clipboard(tag_str)
-    
-    st.divider()
-    
-    # All hashtags grid - with inline copy buttons
-    st.subheader("📋 All Hashtags")
-    cols = st.columns(4)
-    
-    for idx, h in enumerate(hashtags[:20]):
-        tag = h.get("hashtag", "")
-        count = h.get("count", 0)
-        views = h.get("total_views", 0)
-        
-        with cols[idx % 4]:
-            with st.container(border=True):
-                st.markdown(f"**{tag}**")
-                
-                # Stats row
-                c1, c2 = st.columns(2)
-                with c1:
-                    st.caption(f"📊 {format_number(count)}")
-                with c2:
-                    st.caption(f"👁️ {format_number(views)}")
-                
-                # Copy button on new row
-                if st.button("📋 Copy", key=f"copy_tag_{idx}", use_container_width=True):
-                    copy_to_clipboard(tag)
-
-# ==================== NICHE SCOUT ====================
-def show_niche_scout():
-    st.title("🎯 Niche Scout")
-    
-    data = get_data("niches")
-    niches = data.get("data", [])
-    
-    if not niches:
-        st.warning("No niches available")
-        return
-    
-    # Search
-    search = st.text_input("Search niches", placeholder="Type to filter...")
-    
-    if search:
-        niches = [n for n in niches if search.lower() in n.get("label", "").lower()]
-    
-    st.divider()
-    
-    # All niches in 4-column grid
-    st.subheader(f"📋 {len(niches)} Niches Available")
-    cols = st.columns(4)
-    
-    for idx, n in enumerate(niches):
-        niche_id = n.get("id", "")
-        label = n.get("label", "Unknown")
-        
-        with cols[idx % 4]:
-            with st.container(border=True):
-                st.markdown(f"**{label}**")
-                st.caption(f"ID: {niche_id}")
-                if st.button("Explore", key=f"niche_{idx}", use_container_width=True):
-                    st.toast(f"✅ Use '{niche_id}' in Video Vault filter!")
 
 # ==================== VIDEO VAULT ====================
 def show_video_vault():
     st.title("🎬 Video Vault")
     
+    # Get video data first for insights
+    data = get_data("videos", limit=20)
+    videos = data.get("data", [])
+    
+    # Insights at top
+    if videos:
+        st.subheader("📊 Insights")
+        lengths = [v.get("duration", 0) for v in videos if v.get("duration")]
+        avg_len = sum(lengths) / len(lengths) if lengths else 0
+        
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.metric("Avg Length", f"{int(avg_len)}s")
+        with col2:
+            total_views = sum(v.get("views", 0) for v in videos)
+            st.metric("Total Views", format_number(total_views))
+        with col3:
+            st.metric("Videos Analyzed", len(videos))
+        
+        st.divider()
+    
     # Filters
     col1, col2 = st.columns(2)
-    
     with col1:
-        niche_data = get_data("niches")
-        niches = niche_data.get("data", [])
-        niche_options = ["All"] + [n.get("id", "") for n in niches]
-        selected_niche = st.selectbox("Niche", niche_options)
-    
+        platform_filter = st.selectbox("Platform", ["All", "YouTube", "TikTok"])
     with col2:
-        limit = st.slider("Videos", 5, 30, 12)
-    
-    niche = None if selected_niche == "All" else selected_niche
-    data = get_data("videos", limit=limit, niche=niche)
-    videos = data.get("data", [])
+        limit = st.slider("Videos to show", 5, 20, 12)
     
     if not videos:
         st.warning("No videos found")
         return
     
+    # Filter by platform
+    filtered = videos
+    if platform_filter != "All":
+        filtered = [v for v in videos if v.get("type", "").lower() == platform_filter.lower()]
+    
     st.divider()
     
-    # Video grid - 4 columns
+    # Video grid
     cols = st.columns(4)
-    
-    for idx, v in enumerate(videos):
+    for idx, v in enumerate(filtered[:limit]):
         with cols[idx % 4]:
             with st.container(border=True):
                 vid_type = v.get("type", "").upper()
@@ -476,10 +441,8 @@ def show_video_vault():
                 st.markdown(f"**{desc}**...")
                 st.caption(f"👁️ {format_number(views)} views")
                 
-                # Hashtags
                 if hashtags:
-                    tag_str = " ".join(hashtags[:3])
-                    st.caption(f"🏷️ {tag_str}")
+                    st.caption(f"🏷️ {' '.join(hashtags[:3])}")
                 
                 c1, c2 = st.columns(2)
                 with c1:
@@ -493,80 +456,87 @@ def show_video_vault():
                             ''', unsafe_allow_html=True)
                         else:
                             st.link_button("Open →", url, use_container_width=True)
-                
                 with c2:
                     if st.button("📋 Tags", key=f"vid_copy_{idx}"):
                         copy_to_clipboard(" ".join(hashtags))
-    
-    st.divider()
-    
-    # Insights
-    st.subheader("📊 Insights")
-    if videos:
-        lengths = [v.get("duration", 0) for v in videos if v.get("duration")]
-        avg_len = sum(lengths) / len(lengths) if lengths else 0
-        
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            st.metric("Avg Length", f"{int(avg_len)}s")
-        with col2:
-            total_views = sum(v.get("views", 0) for v in videos)
-            st.metric("Total Views", format_number(total_views))
-        with col3:
-            st.metric("Videos Analyzed", len(videos))
 
 # ==================== WEEKLY BLUEPRINT ====================
 def show_weekly_blueprint():
     st.title("📋 Weekly Blueprint")
-    
-    st.write("Get 5 ready-to-shoot content ideas for the week.")
+    st.write("Get 5 AI-generated content ideas for the week.")
     
     # Setup
     col1, col2, col3 = st.columns(3)
-    
-    niche_data = get_data("niches")
-    niches = niche_data.get("data", [])
-    niche_options = [n.get("label", n.get("id", "")) for n in niches]
-    
     with col1:
-        niche = st.selectbox("Your Niche", niche_options[:20] if niche_options else ["General"])
+        niche = st.text_input("Your Niche", placeholder="e.g., Tech, Fitness, Comedy")
     with col2:
         platform = st.selectbox("Platform", ["TikTok", "YouTube Shorts", "Instagram Reels"])
     with col3:
         tone = st.selectbox("Tone", ["Funny", "Educational", "Dramatic", "Inspirational"])
     
-    if st.button("✨ Generate My Week", type="primary", use_container_width=True):
-        # Reuse trends data (no extra API call)
-        trends_data = get_data("trends")
-        trend_groups = trends_data.get("data", [])
-        trends = trend_groups[0].get("trends", []) if trend_groups else []
-        
-        # Generate ideas from trends
-        days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-        ideas = []
-        
-        for i, day in enumerate(days):
-            if i < len(trends):
-                t = trends[i]
-                trend_info = t.get("trend", {})
-                ideas.append({
+    if st.button("✨ Generate My Week", type="primary", use_container_width=True, disabled=not niche):
+        with st.spinner("🤖 AI is crafting your content ideas..."):
+            # Get trends for context
+            trends_data = get_data("trends")
+            trend_groups = trends_data.get("data", [])
+            trends = trend_groups[0].get("trends", []) if trend_groups else []
+            
+            trend_names = [t.get("trend", {}).get("name", "") for t in trends[:5]]
+            trends_context = ", ".join(trend_names) if trend_names else "general viral content"
+            
+            # AI prompt
+            prompt = f"""Generate 5 content ideas for a {niche} creator on {platform} with a {tone} tone.
+            
+Current trending topics: {trends_context}
+
+For each day (Monday-Friday), provide:
+1. A specific video idea (1 sentence)
+2. An engaging hook (first line to capture attention)
+3. 3 relevant hashtags
+4. Difficulty level (Easy/Medium/Hard)
+5. Best posting time in UTC
+
+Format as JSON array with keys: day, trend, video_idea, hook, hashtags (array), difficulty, best_time
+Return ONLY valid JSON, no markdown."""
+
+            fallback_ideas = []
+            days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+            for i, day in enumerate(days):
+                trend = trend_names[i] if i < len(trend_names) else f"{niche} tips"
+                fallback_ideas.append({
                     "day": day,
-                    "trend": trend_info.get("name", f"Trend {i+1}"),
-                    "description": trend_info.get("description", ""),
-                    "video_idea": f"Create a {tone.lower()} video about {trend_info.get('name', 'this trend')} for {platform}",
-                    "hook": f"POV: You just discovered {trend_info.get('name', 'this')}...",
-                    "hashtags": ["#fyp", "#viral", f"#{trend_info.get('name', 'trend').replace(' ', '').lower()[:15]}"],
+                    "trend": trend,
+                    "video_idea": f"Create a {tone.lower()} {platform} video about {trend}",
+                    "hook": f"POV: You just discovered {trend}...",
+                    "hashtags": ["#fyp", "#viral", f"#{niche.lower().replace(' ', '')}"],
                     "difficulty": ["Easy", "Medium", "Hard"][i % 3],
                     "best_time": f"{14 + i % 4}:00 UTC"
                 })
-        
-        st.session_state.weekly_plan = {"ideas": ideas, "niche": niche, "platform": platform}
-        save_cache_to_file()
-        st.rerun()
+            
+            ai_response = generate_with_ai(prompt, "")
+            
+            ideas = fallback_ideas
+            if ai_response:
+                try:
+                    # Try to parse AI response
+                    clean = ai_response.strip()
+                    if clean.startswith("```"):
+                        clean = clean.split("```")[1]
+                        if clean.startswith("json"):
+                            clean = clean[4:]
+                    parsed = json.loads(clean)
+                    if isinstance(parsed, list) and len(parsed) >= 5:
+                        ideas = parsed[:5]
+                except:
+                    pass  # Use fallback
+            
+            st.session_state.weekly_plan = {"ideas": ideas, "niche": niche, "platform": platform}
+            save_cache_to_file()
+            st.rerun()
     
     st.divider()
     
-    # Show plan - 2 columns for better mobile view
+    # Show plan
     plan = st.session_state.weekly_plan
     if plan:
         ideas = plan.get("ideas", [])
@@ -575,80 +545,123 @@ def show_weekly_blueprint():
         for idx, idea in enumerate(ideas):
             with cols[idx % 2]:
                 with st.container(border=True):
-                    # Header with copy button
                     c1, c2 = st.columns([3, 1])
                     with c1:
-                        st.markdown(f"### {idea['day']}")
-                        st.caption(idea['trend'])
+                        st.markdown(f"### {idea.get('day', f'Day {idx+1}')}")
+                        st.caption(idea.get('trend', ''))
                     with c2:
-                        st.caption(f"⭐ {idea['difficulty']}")
+                        st.caption(f"⭐ {idea.get('difficulty', 'Medium')}")
                     
-                    st.write(f"📹 {idea['video_idea']}")
-                    st.write(f"🎬 _{idea['hook']}_")
+                    st.write(f"📹 {idea.get('video_idea', '')}")
+                    st.write(f"🎬 _{idea.get('hook', '')}_")
                     
-                    tag_str = " ".join(idea['hashtags'])
+                    hashtags = idea.get('hashtags', [])
+                    if isinstance(hashtags, list):
+                        tag_str = " ".join(hashtags)
+                    else:
+                        tag_str = str(hashtags)
                     st.code(tag_str)
                     
-                    st.caption(f"⏰ {idea['best_time']}")
+                    st.caption(f"⏰ {idea.get('best_time', '14:00 UTC')}")
                     
                     c1, c2 = st.columns(2)
                     with c1:
                         if st.button("✅ Use", key=f"use_{idx}", use_container_width=True):
                             st.session_state.brief_prefill = idea
-                            st.toast(f"✅ Go to **Brief Creator**")
+                            st.session_state.current_page = 2  # Brief Creator
+                            st.toast("✅ Go to **Brief Creator**")
                     with c2:
                         if st.button("📋 Copy", key=f"copy_idea_{idx}", use_container_width=True):
-                            copy_to_clipboard(f"{idea['day']}: {idea['video_idea']}\n{tag_str}")
+                            copy_to_clipboard(f"{idea.get('day', '')}: {idea.get('video_idea', '')}\n{tag_str}")
+        
+        if st.button("🗑️ Clear Plan", use_container_width=True):
+            st.session_state.weekly_plan = None
+            save_cache_to_file()
+            st.rerun()
     else:
-        st.info("👆 Set your preferences and click 'Generate My Week'")
+        st.info("👆 Enter your niche and click 'Generate My Week'")
 
 # ==================== BRIEF CREATOR ====================
 def show_brief_creator():
     st.title("📄 Brief Creator")
-    st.write("Create professional one-page briefs for your team.")
+    st.write("Create AI-powered professional content briefs.")
     
-    # Pre-fill from weekly plan if available
     prefill = st.session_state.brief_prefill
     
     col1, col2 = st.columns(2)
     with col1:
         topic = st.text_input("Topic/Trend", value=prefill.get("trend", "") if prefill else "")
     with col2:
-        niche_data = get_data("niches")
-        niches = niche_data.get("data", [])
-        niche_options = ["General"] + [n.get("label", "") for n in niches[:20]]
-        niche = st.selectbox("Your Niche", niche_options)
+        niche = st.text_input("Your Niche", value="General", placeholder="e.g., Tech, Fitness")
     
     description = st.text_area(
-        "Description",
-        value=prefill.get("description", "") if prefill else "",
-        placeholder="Describe the trend or idea..."
+        "Description (optional)",
+        value=prefill.get("video_idea", "") if prefill else "",
+        placeholder="Describe the trend or your content idea..."
     )
     
     if st.button("✨ Generate Brief", type="primary", use_container_width=True, disabled=not topic):
-        brief = {
-            "trend_name": topic,
-            "niche": niche,
-            "prepared_date": datetime.now().strftime("%Y-%m-%d"),
-            "description": description,
-            "sections": {
+        with st.spinner("🤖 AI is creating your brief..."):
+            # AI prompt
+            prompt = f"""Create a professional content brief for a creator making a video about "{topic}" in the {niche} niche.
+
+Include:
+1. Why This Trend (2-3 sentences on why it's relevant now)
+2. What To Create:
+   - Video format recommendation
+   - Suggested length
+   - Hook copy (attention-grabbing first line)
+   - Best posting time
+3. Hashtag Strategy:
+   - 4 safe hashtags (mid competition)
+   - 4 aggressive hashtags (high reach)
+   - 3 hidden gem hashtags (low competition)
+
+Additional context: {description}
+
+Format as JSON with keys: why_this_trend, format, length, hook_copy, best_time, safe_hashtags, aggressive_hashtags, gem_hashtags
+Return ONLY valid JSON, no markdown."""
+
+            # Fallback brief
+            fallback = {
                 "why_this_trend": f"The {topic} trend is gaining momentum and presents a timely opportunity for creators in the {niche} space.",
-                "what_to_create": {
-                    "format": "Vertical video, 30-60 seconds",
-                    "hook_copy": prefill.get("hook", f"Wait... is this really {topic}? 🤯") if prefill else f"Wait... is this really {topic}? 🤯",
-                    "best_time": prefill.get("best_time", "2-4 PM UTC") if prefill else "2-4 PM UTC"
-                },
-                "hashtags": {
-                    "safe": ["#fyp", "#viral", "#trending"],
-                    "aggressive": ["#fyp", "#foryou", "#explore", "#viral"],
-                    "gems": ["#newtrend", "#underrated"]
-                }
+                "format": "Vertical video, fast-paced editing",
+                "length": "30-60 seconds",
+                "hook_copy": prefill.get("hook", f"Wait... is this really {topic}? 🤯") if prefill else f"Wait... is this really {topic}? 🤯",
+                "best_time": prefill.get("best_time", "2-4 PM UTC") if prefill else "2-4 PM UTC",
+                "safe_hashtags": ["#fyp", "#viral", "#trending", "#foryou"],
+                "aggressive_hashtags": ["#fyp", "#foryou", "#explore", "#viral"],
+                "gem_hashtags": ["#newtrend", "#underrated", "#mustwatch"]
             }
-        }
-        st.session_state.generated_brief = brief
-        st.session_state.brief_prefill = None
-        save_cache_to_file()
-        st.rerun()
+            
+            ai_response = generate_with_ai(prompt, "")
+            
+            brief_data = fallback
+            if ai_response:
+                try:
+                    clean = ai_response.strip()
+                    if clean.startswith("```"):
+                        clean = clean.split("```")[1]
+                        if clean.startswith("json"):
+                            clean = clean[4:]
+                    parsed = json.loads(clean)
+                    if isinstance(parsed, dict):
+                        brief_data = {**fallback, **parsed}
+                except:
+                    pass
+            
+            brief = {
+                "trend_name": topic,
+                "niche": niche,
+                "prepared_date": datetime.now().strftime("%Y-%m-%d"),
+                "description": description,
+                "sections": brief_data
+            }
+            
+            st.session_state.generated_brief = brief
+            st.session_state.brief_prefill = None
+            save_cache_to_file()
+            st.rerun()
     
     st.divider()
     
@@ -658,53 +671,56 @@ def show_brief_creator():
         st.subheader(f"🔥 {brief['trend_name']}")
         st.caption(f"Niche: {brief['niche']} | Prepared: {brief['prepared_date']}")
         
-        sections = brief["sections"]
+        s = brief["sections"]
         
         st.markdown("**💡 Why This Trend**")
-        st.write(sections["why_this_trend"])
+        st.write(s.get("why_this_trend", ""))
         
         st.markdown("**🎬 What to Create**")
-        wtc = sections["what_to_create"]
         col1, col2 = st.columns(2)
         with col1:
-            st.write(f"Format: {wtc['format']}")
+            st.write(f"Format: {s.get('format', 'Vertical video')}")
+            st.write(f"Length: {s.get('length', '30-60 seconds')}")
         with col2:
-            st.write(f"Best time: {wtc['best_time']}")
-        st.write(f"Hook: _{wtc['hook_copy']}_")
+            st.write(f"Best time: {s.get('best_time', '2-4 PM UTC')}")
+        st.write(f"Hook: _{s.get('hook_copy', '')}_")
         
         st.markdown("**🏷️ Hashtag Strategy**")
-        hs = sections["hashtags"]
         col1, col2, col3 = st.columns(3)
         with col1:
             st.caption("Safe")
-            st.code(" ".join(hs["safe"]))
+            tags = s.get("safe_hashtags", [])
+            st.code(" ".join(tags) if isinstance(tags, list) else str(tags))
         with col2:
             st.caption("Aggressive")
-            st.code(" ".join(hs["aggressive"]))
+            tags = s.get("aggressive_hashtags", [])
+            st.code(" ".join(tags) if isinstance(tags, list) else str(tags))
         with col3:
             st.caption("Hidden Gems")
-            st.code(" ".join(hs["gems"]))
+            tags = s.get("gem_hashtags", [])
+            st.code(" ".join(tags) if isinstance(tags, list) else str(tags))
         
         st.divider()
         
+        # Export
         col1, col2 = st.columns(2)
         with col1:
-            brief_text = f"""
-CONTENT BRIEF: {brief['trend_name']}
+            brief_text = f"""CONTENT BRIEF: {brief['trend_name']}
 Niche: {brief['niche']} | Date: {brief['prepared_date']}
 
 WHY THIS TREND
-{sections['why_this_trend']}
+{s.get('why_this_trend', '')}
 
 WHAT TO CREATE
-Format: {wtc['format']}
-Hook: {wtc['hook_copy']}
-Best time: {wtc['best_time']}
+Format: {s.get('format', '')}
+Length: {s.get('length', '')}
+Hook: {s.get('hook_copy', '')}
+Best time: {s.get('best_time', '')}
 
 HASHTAGS
-Safe: {' '.join(hs['safe'])}
-Aggressive: {' '.join(hs['aggressive'])}
-Gems: {' '.join(hs['gems'])}
+Safe: {' '.join(s.get('safe_hashtags', [])) if isinstance(s.get('safe_hashtags'), list) else s.get('safe_hashtags', '')}
+Aggressive: {' '.join(s.get('aggressive_hashtags', [])) if isinstance(s.get('aggressive_hashtags'), list) else s.get('aggressive_hashtags', '')}
+Gems: {' '.join(s.get('gem_hashtags', [])) if isinstance(s.get('gem_hashtags'), list) else s.get('gem_hashtags', '')}
 """
             st.download_button(
                 "📄 Download Brief (.txt)",
@@ -716,6 +732,11 @@ Gems: {' '.join(hs['gems'])}
         with col2:
             if st.button("📋 Copy Brief", use_container_width=True):
                 copy_to_clipboard(brief_text)
+        
+        if st.button("🗑️ Clear Brief", use_container_width=True):
+            st.session_state.generated_brief = None
+            save_cache_to_file()
+            st.rerun()
     else:
         st.info("Enter a topic and generate your brief")
 
@@ -726,6 +747,9 @@ def show_settings():
     mode = "🔴 Live" if st.session_state.mode == "live" else "📊 Demo"
     st.write(f"**Current Mode:** {mode}")
     st.write(f"**Credits Used:** {format_number(st.session_state.credits_used)}")
+    
+    gemini_status = "✅ Connected" if get_gemini_key() else "❌ Not configured"
+    st.write(f"**Gemini AI:** {gemini_status}")
     
     st.divider()
     
@@ -768,12 +792,10 @@ def show_settings():
 
 # ==================== MAIN ====================
 def main():
-    # Welcome screen if no mode selected
     if not st.session_state.mode:
         show_welcome()
         return
     
-    # Sidebar
     with st.sidebar:
         st.title("🔥 TrendForge")
         
@@ -782,13 +804,12 @@ def main():
         
         st.divider()
         
-        pages = ["📊 Trend Hub", "🏷️ Hashtag Lab", "🎯 Niche Scout",
-             "🎬 Video Vault", "📋 Weekly Blueprint", "📄 Brief Creator", "⚙️ Settings"]
+        pages = ["📊 Trend Hub", "🎬 Video Vault", "📋 Weekly Blueprint", "📄 Brief Creator", "⚙️ Settings"]
         
         page = st.radio(
             "Navigate",
             pages,
-            index=st.session_state.current_page,
+            index=min(st.session_state.current_page, len(pages) - 1),
             label_visibility="collapsed",
             key="nav_radio"
         )
@@ -797,16 +818,15 @@ def main():
         
         st.divider()
         
-        # Data refresh section
+        # Data refresh
         st.caption("💾 Data")
-        refresh_options = ["All Data", "Trends", "Hashtags", "Videos", "Niches"]
+        refresh_options = ["All Data", "Trends", "Hashtags", "Videos"]
         refresh_target = st.selectbox("Refresh", refresh_options, label_visibility="collapsed")
         
         if st.button("🔄 Refresh Data", use_container_width=True):
             if refresh_target == "All Data":
                 st.session_state.cache = {}
             else:
-                # Clear specific cache keys
                 target_key = refresh_target.lower()
                 keys_to_remove = [k for k in st.session_state.cache.keys() if target_key in k]
                 for k in keys_to_remove:
@@ -817,7 +837,6 @@ def main():
         
         st.divider()
         
-        # Live mode toggle in sidebar
         if st.session_state.mode == "demo":
             st.caption("Ready for real data?")
             key = st.text_input("API Key", type="password", key="sidebar_key")
@@ -830,10 +849,6 @@ def main():
     # Page routing
     if page == "📊 Trend Hub":
         show_trend_hub()
-    elif page == "🏷️ Hashtag Lab":
-        show_hashtag_lab()
-    elif page == "🎯 Niche Scout":
-        show_niche_scout()
     elif page == "🎬 Video Vault":
         show_video_vault()
     elif page == "📋 Weekly Blueprint":
