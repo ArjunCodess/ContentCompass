@@ -1,4 +1,4 @@
-<h2 align="center" style="text-wrap: balance;">ContentCompass - AI-Powered Trend Intelligence & Content Planning Platform</h2>
+<h1 align="center" style="text-wrap: balance;">ContentCompass - AI-Powered Trend Intelligence & Content Planning Platform</h1>
 
 <p align="center">
   AI-powered trend intelligence and content planning tool for creators — discover trending content, optimize hashtag strategies, and generate actionable briefs using Gemini AI.
