@@ -23,8 +23,6 @@ if "weekly_plan" not in st.session_state:
     st.session_state.weekly_plan = None
 if "generated_brief" not in st.session_state:
     st.session_state.generated_brief = None
-if "selected_trend" not in st.session_state:
-    st.session_state.selected_trend = None
 if "brief_prefill" not in st.session_state:
     st.session_state.brief_prefill = None
 if "current_page" not in st.session_state:
@@ -264,14 +262,7 @@ def show_welcome():
 
 # ==================== TREND HUB ====================
 def show_trend_hub():
-    col1, col2 = st.columns([4, 1])
-    with col1:
-        st.title("📊 Trend Hub")
-    with col2:
-        if st.button("🔄 Refresh", use_container_width=True):
-            st.session_state.cache = {}
-            save_cache_to_file()
-            st.rerun()
+    st.title("📊 Trend Hub")
     
     data = get_data("trends")
     trend_groups = data.get("data", [])
@@ -314,9 +305,8 @@ def show_trend_hub():
                     st.markdown(f"### {name}")
                     st.caption(desc + "...")
                     
-                    if st.button("Explore →", key=f"hero_{i}", use_container_width=True):
-                        st.session_state.selected_trend = t
-                        st.toast(f"✅ Selected! Go to **Hashtag Lab** in sidebar")
+                    if st.button("View Details", key=f"hero_{i}", use_container_width=True):
+                        st.toast(f"ℹ️ {name} - Check Video Vault for related content")
     
     st.divider()
     
@@ -334,25 +324,12 @@ def show_trend_hub():
             with st.container(border=True):
                 st.markdown(f"**#{ranking} {name}**")
                 st.caption(desc + "...")
-                if st.button("Get Hashtags", key=f"trend_{idx}", use_container_width=True):
-                    st.session_state.selected_trend = t
-                    st.toast(f"✅ Selected! Go to **Hashtag Lab** in sidebar")
+                if st.button("View Details", key=f"trend_{idx}", use_container_width=True):
+                    st.toast(f"ℹ️ {name} - Check Video Vault for related content")
 
 # ==================== HASHTAG LAB ====================
 def show_hashtag_lab():
-    col1, col2 = st.columns([4, 1])
-    with col1:
-        st.title("🏷️ Hashtag Lab")
-    with col2:
-        if st.button("🔄 Refresh"):
-            st.session_state.cache = {}
-            save_cache_to_file()
-            st.rerun()
-    
-    # Show selected trend if any
-    if st.session_state.selected_trend:
-        trend_info = st.session_state.selected_trend.get("trend", {})
-        st.info(f"📌 Exploring: **{trend_info.get('name', 'Selected Trend')}**")
+    st.title("🏷️ Hashtag Lab")
     
     # Filter controls
     search = st.text_input("Search hashtags", placeholder="Filter...")
@@ -408,13 +385,7 @@ def show_hashtag_lab():
         
         with cols[idx % 4]:
             with st.container(border=True):
-                # Title row with copy button
-                c1, c2 = st.columns([3, 1])
-                with c1:
-                    st.markdown(f"**{tag}**")
-                with c2:
-                    if st.button("📋", key=f"copy_tag_{idx}"):
-                        copy_to_clipboard(tag)
+                st.markdown(f"**{tag}**")
                 
                 # Stats row
                 c1, c2 = st.columns(2)
@@ -422,17 +393,14 @@ def show_hashtag_lab():
                     st.caption(f"📊 {format_number(count)}")
                 with c2:
                     st.caption(f"👁️ {format_number(views)}")
+                
+                # Copy button on new row
+                if st.button("📋 Copy", key=f"copy_tag_{idx}", use_container_width=True):
+                    copy_to_clipboard(tag)
 
 # ==================== NICHE SCOUT ====================
 def show_niche_scout():
-    col1, col2 = st.columns([4, 1])
-    with col1:
-        st.title("🎯 Niche Scout")
-    with col2:
-        if st.button("🔄 Refresh"):
-            st.session_state.cache = {}
-            save_cache_to_file()
-            st.rerun()
+    st.title("🎯 Niche Scout")
     
     data = get_data("niches")
     niches = data.get("data", [])
@@ -466,14 +434,7 @@ def show_niche_scout():
 
 # ==================== VIDEO VAULT ====================
 def show_video_vault():
-    col1, col2 = st.columns([4, 1])
-    with col1:
-        st.title("🎬 Video Vault")
-    with col2:
-        if st.button("🔄 Refresh"):
-            st.session_state.cache = {}
-            save_cache_to_file()
-            st.rerun()
+    st.title("🎬 Video Vault")
     
     # Filters
     col1, col2 = st.columns(2)
@@ -556,14 +517,7 @@ def show_video_vault():
 
 # ==================== WEEKLY BLUEPRINT ====================
 def show_weekly_blueprint():
-    col1, col2 = st.columns([4, 1])
-    with col1:
-        st.title("📋 Weekly Blueprint")
-    with col2:
-        if st.button("🔄 Clear"):
-            st.session_state.weekly_plan = None
-            save_cache_to_file()
-            st.rerun()
+    st.title("📋 Weekly Blueprint")
     
     st.write("Get 5 ready-to-shoot content ideas for the week.")
     
@@ -840,6 +794,26 @@ def main():
         )
         
         st.session_state.current_page = pages.index(page)
+        
+        st.divider()
+        
+        # Data refresh section
+        st.caption("💾 Data")
+        refresh_options = ["All Data", "Trends", "Hashtags", "Videos", "Niches"]
+        refresh_target = st.selectbox("Refresh", refresh_options, label_visibility="collapsed")
+        
+        if st.button("🔄 Refresh Data", use_container_width=True):
+            if refresh_target == "All Data":
+                st.session_state.cache = {}
+            else:
+                # Clear specific cache keys
+                target_key = refresh_target.lower()
+                keys_to_remove = [k for k in st.session_state.cache.keys() if target_key in k]
+                for k in keys_to_remove:
+                    del st.session_state.cache[k]
+            save_cache_to_file()
+            st.toast(f"✅ {refresh_target} refreshed!")
+            st.rerun()
         
         st.divider()
         
