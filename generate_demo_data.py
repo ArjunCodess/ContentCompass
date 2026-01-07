@@ -1,5 +1,5 @@
 """
-Demo Data Generator for TrendForge
+Demo Data Generator for ContentCompass
 
 Fetches REAL data from Virlo API and saves as demo data.
 Uses VIRLO_API_KEY from .env file.
@@ -149,7 +149,7 @@ def generate_brief_template(trends_data: dict) -> dict:
 
 def main():
     """Fetch real data from Virlo and save as demo files"""
-    print("🔥 TrendForge Demo Data Generator")
+    print("🔥 ContentCompass Demo Data Generator")
     print("=" * 50)
     print("Fetching REAL data from Virlo API...")
     print()

@@ -1,5 +1,5 @@
 """
-TrendForge - Trend Intelligence & Content Planning
+ContentCompass - Trend Intelligence & Content Planning
 
 Full-featured app with Virlo API integration, Gemini AI, video embeds, and export.
 """
@@ -37,7 +37,7 @@ if "enabled_endpoints" not in st.session_state:
 
 # Page config
 st.set_page_config(
-    page_title="TrendForge",
+    page_title="ContentCompass",
     page_icon="🔥",
     layout="wide",
 )
@@ -222,7 +222,7 @@ def get_data(endpoint: str, force_refresh: bool = False, **kwargs) -> Dict:
 
 # ==================== WELCOME SCREEN ====================
 def show_welcome():
-    st.title("🔥 TrendForge")
+    st.title("🔥 ContentCompass")
     st.subheader("Trend Intelligence & Content Planning")
     
     st.divider()
@@ -827,7 +827,7 @@ def main():
         return
     
     with st.sidebar:
-        st.title("🔥 TrendForge")
+        st.title("🔥 ContentCompass")
         
         mode_label = "🔴 Live" if st.session_state.mode == "live" else "📊 Demo"
         st.caption(f"{mode_label} | {format_number(st.session_state.credits_used)} credits")

@@ -1,8 +1,8 @@
-# TrendForge: Complete Product Specification for AI Code Agent
+# ContentCompass: Complete Product Specification for AI Code Agent
 
 ## Executive Summary
 
-**TrendForge** is a creator-focused trend intelligence and content planning tool built with Python + Streamlit. It features two modes:
+**ContentCompass** is a creator-focused trend intelligence and content planning tool built with Python + Streamlit. It features two modes:
 - **Demo Mode**: Uses locally-generated JSON sample data (no API calls)
 - **Live Mode**: Uses Virlo API with BYOK authentication (user provides API key)
 
@@ -42,7 +42,7 @@ On app launch, user sees two buttons:
 
 ```
 ┌─────────────────────────────────────────┐
-│         Welcome to TrendForge            │
+│         Welcome to ContentCompass            │
 │                                          │
 │  [📊 Try Demo]    [🔌 Connect Live API] │
 └─────────────────────────────────────────┘
@@ -526,7 +526,7 @@ Be concise, actionable, and ready-to-share.
 ## Navigation Structure
 
 ```
-TrendForge
+ContentCompass
 ├── 📊 Trend Hub (What's Hot Right Now)
 ├── 🏷️ Hashtag Lab (Find Your Tag Strategy)
 ├── 🎯 Niche Scout (Pick Your Lane)
