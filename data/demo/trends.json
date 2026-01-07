@@ -1,0 +1,163 @@
+{
+  "results": 1,
+  "data": [
+    {
+      "id": "demo-trend-group-001",
+      "title": "Trends for Today",
+      "trends": [
+        {
+          "id": "trend-001",
+          "trend_id": "t-001",
+          "trend_group_id": "demo-trend-group-001",
+          "ranking": 1,
+          "trend": {
+            "id": "t-001",
+            "name": "AI Reaction Videos",
+            "description": "Creators are reacting to AI-generated content, from hilarious fails to mind-blowing creations. This format combines tech curiosity with entertainment value.",
+            "trend_type": "content"
+          },
+          "growth_percent": 234,
+          "views_24h": 2300000,
+          "status": "hot"
+        },
+        {
+          "id": "trend-002",
+          "trend_id": "t-002",
+          "trend_group_id": "demo-trend-group-001",
+          "ranking": 2,
+          "trend": {
+            "id": "t-002",
+            "name": "Dance Challenge Revival",
+            "description": "Classic dance challenges are making a comeback with modern twists. Creators are remixing iconic moves with current songs.",
+            "trend_type": "content"
+          },
+          "growth_percent": 12,
+          "views_24h": 5600000,
+          "status": "stable"
+        },
+        {
+          "id": "trend-003",
+          "trend_id": "t-003",
+          "trend_group_id": "demo-trend-group-001",
+          "ranking": 3,
+          "trend": {
+            "id": "t-003",
+            "name": "Tech Satire Skits",
+            "description": "Comedy sketches poking fun at tech culture, startup life, and Silicon Valley stereotypes are resonating with audiences.",
+            "trend_type": "content"
+          },
+          "growth_percent": 156,
+          "views_24h": 234000,
+          "status": "emerging"
+        },
+        {
+          "id": "trend-004",
+          "trend_id": "t-004",
+          "trend_group_id": "demo-trend-group-001",
+          "ranking": 4,
+          "trend": {
+            "id": "t-004",
+            "name": "GRWM Storytimes",
+            "description": "Get Ready With Me videos combined with dramatic storytelling are dominating. Authentic, unfiltered content performs best.",
+            "trend_type": "content"
+          },
+          "growth_percent": 89,
+          "views_24h": 1800000,
+          "status": "stable"
+        },
+        {
+          "id": "trend-005",
+          "trend_id": "t-005",
+          "trend_group_id": "demo-trend-group-001",
+          "ranking": 5,
+          "trend": {
+            "id": "t-005",
+            "name": "Day in My Life: Remote Worker Edition",
+            "description": "Work-from-home lifestyle content showing productive routines, home office setups, and the reality of remote work.",
+            "trend_type": "content"
+          },
+          "growth_percent": 67,
+          "views_24h": 920000,
+          "status": "stable"
+        },
+        {
+          "id": "trend-006",
+          "trend_id": "t-006",
+          "trend_group_id": "demo-trend-group-001",
+          "ranking": 6,
+          "trend": {
+            "id": "t-006",
+            "name": "Cooking with Chaos",
+            "description": "Chaotic cooking videos where things go wrong (sometimes intentionally) are outperforming polished recipe content.",
+            "trend_type": "content"
+          },
+          "growth_percent": 178,
+          "views_24h": 456000,
+          "status": "emerging"
+        },
+        {
+          "id": "trend-007",
+          "trend_id": "t-007",
+          "trend_group_id": "demo-trend-group-001",
+          "ranking": 7,
+          "trend": {
+            "id": "t-007",
+            "name": "Book Reviews TikTok Style",
+            "description": "BookTok continues strong with quick, emotional book reviews and recommendations driving massive engagement.",
+            "trend_type": "content"
+          },
+          "growth_percent": 45,
+          "views_24h": 780000,
+          "status": "stable"
+        },
+        {
+          "id": "trend-008",
+          "trend_id": "t-008",
+          "trend_group_id": "demo-trend-group-001",
+          "ranking": 8,
+          "trend": {
+            "id": "t-008",
+            "name": "Pet Reaction Compilations",
+            "description": "Pets reacting to sounds, other animals, or their owners' antics. Simple but highly shareable content format.",
+            "trend_type": "content"
+          },
+          "growth_percent": 23,
+          "views_24h": 3400000,
+          "status": "stable"
+        },
+        {
+          "id": "trend-009",
+          "trend_id": "t-009",
+          "trend_group_id": "demo-trend-group-001",
+          "ranking": 9,
+          "trend": {
+            "id": "t-009",
+            "name": "Mini Vlog Format",
+            "description": "Ultra-short vlogs (under 60 seconds) capturing a single moment or activity. Low effort, high authenticity.",
+            "trend_type": "format"
+          },
+          "growth_percent": 112,
+          "views_24h": 567000,
+          "status": "emerging"
+        },
+        {
+          "id": "trend-010",
+          "trend_id": "t-010",
+          "trend_group_id": "demo-trend-group-001",
+          "ranking": 10,
+          "trend": {
+            "id": "t-010",
+            "name": "POV Drama Series",
+            "description": "Multi-part POV storytelling with cliffhangers keeping audiences coming back. Serialized content strategy working well.",
+            "trend_type": "format"
+          },
+          "growth_percent": 201,
+          "views_24h": 890000,
+          "status": "hot"
+        }
+      ]
+    }
+  ],
+  "snapshot_date": "2026-01-06",
+  "is_demo": true
+}

@@ -1,0 +1,62 @@
+{
+  "trend_name": "AI Reaction Videos",
+  "status": "Early Window",
+  "prepared_date": "2026-01-06",
+  "sections": {
+    "opportunity": {
+      "growth": "+234%",
+      "views_24h": "2.3M",
+      "platform_status": {
+        "TikTok": "🔥 Hottest (2-3x reach)",
+        "YouTube": "📈 Growing",
+        "Reels": "→ Stable (brand fit)"
+      }
+    },
+    "why_this_trend": "The AI content space is exploding as new tools drop weekly. Creators who react to AI-generated content are capturing massive audiences because people are fascinated (and sometimes horrified) by what AI can do. This trend bridges tech curiosity with entertainment, making it accessible to broad audiences.",
+    "what_to_create": {
+      "format": "Vertical, 30-90 seconds",
+      "angle": "Reaction + your unique commentary",
+      "hook_copy": "Wait... is that actually AI?",
+      "typical_length": "45 seconds",
+      "best_posting_time": "2-4 PM UTC"
+    },
+    "hashtag_strategy": {
+      "safe_set": {
+        "tags": ["#AI", "#Reaction", "#Tech", "#AIReaction"],
+        "description": "Mid competition, stable reach"
+      },
+      "aggressive_set": {
+        "tags": ["#AI", "#Viral", "#FYP", "#ForYou"],
+        "description": "High reach, very competitive"
+      },
+      "hidden_gems": {
+        "tags": ["#AIComedy", "#TechFails", "#EarlyTrend"],
+        "description": "Low competition, rising fast"
+      }
+    },
+    "when_to_post": {
+      "days": ["Tuesday", "Wednesday", "Thursday"],
+      "times": "2-4 PM UTC",
+      "why": "Mid-week momentum peaks, highest engagement window"
+    },
+    "top_examples": [
+      {
+        "title": "POV: When the AI writes your response",
+        "views": "2.45M",
+        "platform": "TikTok"
+      },
+      {
+        "title": "I tried the viral AI image generator",
+        "views": "1.89M",
+        "platform": "YouTube"
+      },
+      {
+        "title": "AI generated my morning routine",
+        "views": "1.2M",
+        "platform": "TikTok"
+      }
+    ]
+  },
+  "snapshot_date": "2026-01-06",
+  "is_demo": true
+}

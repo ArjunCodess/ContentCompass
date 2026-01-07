@@ -1,0 +1,282 @@
+{
+  "results": 50,
+  "data": [
+    {
+      "hashtag": "#AIReaction",
+      "count": 45000,
+      "total_views": 2300000000,
+      "growth_7d": 234,
+      "opportunity_score": 87,
+      "safe_set": ["#AI", "#Reaction", "#Tech", "#AIReaction"],
+      "aggressive_set": ["#AI", "#Viral", "#FYP", "#ForYou"],
+      "gem_set": ["#AIComedy", "#TechFails", "#EarlyTrend"],
+      "platforms": ["TikTok", "YouTube", "Reels"]
+    },
+    {
+      "hashtag": "#DanceTok",
+      "count": 2300000,
+      "total_views": 5600000000,
+      "growth_7d": 12,
+      "opportunity_score": 65,
+      "safe_set": ["#DanceTok", "#Dance", "#DanceChallenge", "#Dancing"],
+      "aggressive_set": ["#DanceTok", "#Viral", "#FYP", "#Trending"],
+      "gem_set": ["#NewDance", "#DanceVibes", "#DanceCommunity"],
+      "platforms": ["TikTok", "Reels"]
+    },
+    {
+      "hashtag": "#TechSatire",
+      "count": 23000,
+      "total_views": 234000000,
+      "growth_7d": 156,
+      "opportunity_score": 92,
+      "safe_set": ["#Tech", "#Comedy", "#Satire", "#TechHumor"],
+      "aggressive_set": ["#TechSatire", "#Viral", "#Funny", "#FYP"],
+      "gem_set": ["#StartupLife", "#TechBro", "#SiliconValleyMemes"],
+      "platforms": ["TikTok", "YouTube"]
+    },
+    {
+      "hashtag": "#GRWM",
+      "count": 890000,
+      "total_views": 1800000000,
+      "growth_7d": 89,
+      "opportunity_score": 72,
+      "safe_set": ["#GRWM", "#GetReadyWithMe", "#Makeup", "#Beauty"],
+      "aggressive_set": ["#GRWM", "#Viral", "#FYP", "#MakeupTutorial"],
+      "gem_set": ["#GRWMStorytime", "#RealGRWM", "#MorningRoutine"],
+      "platforms": ["TikTok", "Reels", "YouTube"]
+    },
+    {
+      "hashtag": "#RemoteWork",
+      "count": 156000,
+      "total_views": 920000000,
+      "growth_7d": 67,
+      "opportunity_score": 78,
+      "safe_set": ["#RemoteWork", "#WFH", "#WorkFromHome", "#Productivity"],
+      "aggressive_set": ["#RemoteWork", "#Viral", "#LifeHack", "#FYP"],
+      "gem_set": ["#HomeOffice", "#DigitalNomad", "#RemoteLife"],
+      "platforms": ["TikTok", "LinkedIn", "YouTube"]
+    },
+    {
+      "hashtag": "#CookingFail",
+      "count": 67000,
+      "total_views": 456000000,
+      "growth_7d": 178,
+      "opportunity_score": 89,
+      "safe_set": ["#Cooking", "#Food", "#Recipe", "#Foodie"],
+      "aggressive_set": ["#CookingFail", "#Viral", "#Funny", "#FYP"],
+      "gem_set": ["#ChaoticCooking", "#KitchenDisaster", "#RealCooking"],
+      "platforms": ["TikTok", "YouTube", "Reels"]
+    },
+    {
+      "hashtag": "#BookTok",
+      "count": 1200000,
+      "total_views": 780000000,
+      "growth_7d": 45,
+      "opportunity_score": 68,
+      "safe_set": ["#BookTok", "#Books", "#Reading", "#BookReview"],
+      "aggressive_set": ["#BookTok", "#Viral", "#MustRead", "#FYP"],
+      "gem_set": ["#BookRecs", "#DarkRomance", "#BookishContent"],
+      "platforms": ["TikTok", "YouTube"]
+    },
+    {
+      "hashtag": "#PetsOfTikTok",
+      "count": 3400000,
+      "total_views": 3400000000,
+      "growth_7d": 23,
+      "opportunity_score": 55,
+      "safe_set": ["#Pets", "#Dog", "#Cat", "#PetsOfTikTok"],
+      "aggressive_set": ["#Pets", "#Viral", "#Cute", "#FYP"],
+      "gem_set": ["#PetReaction", "#FunnyPets", "#PetLife"],
+      "platforms": ["TikTok", "Reels", "YouTube"]
+    },
+    {
+      "hashtag": "#MiniVlog",
+      "count": 89000,
+      "total_views": 567000000,
+      "growth_7d": 112,
+      "opportunity_score": 85,
+      "safe_set": ["#Vlog", "#DayInMyLife", "#Lifestyle", "#MiniVlog"],
+      "aggressive_set": ["#MiniVlog", "#Viral", "#Aesthetic", "#FYP"],
+      "gem_set": ["#QuickVlog", "#SnippetLife", "#60SecondVlog"],
+      "platforms": ["TikTok", "YouTube Shorts", "Reels"]
+    },
+    {
+      "hashtag": "#POVDrama",
+      "count": 145000,
+      "total_views": 890000000,
+      "growth_7d": 201,
+      "opportunity_score": 94,
+      "safe_set": ["#POV", "#Drama", "#Acting", "#Storytelling"],
+      "aggressive_set": ["#POVDrama", "#Viral", "#MustWatch", "#FYP"],
+      "gem_set": ["#POVSeries", "#DramaTime", "#CliffhangerContent"],
+      "platforms": ["TikTok", "YouTube Shorts"]
+    },
+    {
+      "hashtag": "#FYP",
+      "count": 50000000,
+      "total_views": 100000000000,
+      "growth_7d": 5,
+      "opportunity_score": 30,
+      "safe_set": ["#FYP", "#ForYou", "#ForYouPage"],
+      "aggressive_set": ["#FYP", "#Viral", "#Trending"],
+      "gem_set": ["#FYPシ", "#fy"],
+      "platforms": ["TikTok"]
+    },
+    {
+      "hashtag": "#Viral",
+      "count": 45000000,
+      "total_views": 90000000000,
+      "growth_7d": 3,
+      "opportunity_score": 25,
+      "safe_set": ["#Viral", "#Trending", "#FYP"],
+      "aggressive_set": ["#Viral", "#MustSee", "#Explore"],
+      "gem_set": ["#GoingViral", "#ViralVideo"],
+      "platforms": ["TikTok", "Reels", "YouTube"]
+    },
+    {
+      "hashtag": "#Fitness",
+      "count": 2100000,
+      "total_views": 4500000000,
+      "growth_7d": 34,
+      "opportunity_score": 60,
+      "safe_set": ["#Fitness", "#Workout", "#Gym", "#Health"],
+      "aggressive_set": ["#Fitness", "#FitTok", "#Viral", "#FYP"],
+      "gem_set": ["#HomeWorkout", "#FitnessJourney", "#GymMotivation"],
+      "platforms": ["TikTok", "Reels", "YouTube"]
+    },
+    {
+      "hashtag": "#Skincare",
+      "count": 1800000,
+      "total_views": 3200000000,
+      "growth_7d": 28,
+      "opportunity_score": 62,
+      "safe_set": ["#Skincare", "#Beauty", "#SkincarRoutine", "#Skin"],
+      "aggressive_set": ["#Skincare", "#Viral", "#MustHave", "#FYP"],
+      "gem_set": ["#GlassSkin", "#SkincareHacks", "#DrugstoreSkincare"],
+      "platforms": ["TikTok", "Reels", "YouTube"]
+    },
+    {
+      "hashtag": "#Fashion",
+      "count": 2500000,
+      "total_views": 4800000000,
+      "growth_7d": 19,
+      "opportunity_score": 55,
+      "safe_set": ["#Fashion", "#OOTD", "#Style", "#Outfit"],
+      "aggressive_set": ["#Fashion", "#Viral", "#Trending", "#FYP"],
+      "gem_set": ["#ThriftHaul", "#StreetStyle", "#FashionInspo"],
+      "platforms": ["TikTok", "Reels", "YouTube"]
+    },
+    {
+      "hashtag": "#Gaming",
+      "count": 3200000,
+      "total_views": 6700000000,
+      "growth_7d": 42,
+      "opportunity_score": 58,
+      "safe_set": ["#Gaming", "#Gamer", "#Games", "#VideoGames"],
+      "aggressive_set": ["#Gaming", "#Viral", "#GamingClips", "#FYP"],
+      "gem_set": ["#IndieGames", "#RetroGaming", "#GamingMoments"],
+      "platforms": ["TikTok", "YouTube", "Twitch"]
+    },
+    {
+      "hashtag": "#Anime",
+      "count": 2800000,
+      "total_views": 5500000000,
+      "growth_7d": 56,
+      "opportunity_score": 64,
+      "safe_set": ["#Anime", "#Manga", "#Otaku", "#AnimeEdit"],
+      "aggressive_set": ["#Anime", "#Viral", "#Weeb", "#FYP"],
+      "gem_set": ["#AnimeCosplay", "#AnimeRecommendations", "#AnimeTok"],
+      "platforms": ["TikTok", "YouTube"]
+    },
+    {
+      "hashtag": "#Crypto",
+      "count": 890000,
+      "total_views": 1200000000,
+      "growth_7d": 145,
+      "opportunity_score": 75,
+      "safe_set": ["#Crypto", "#Bitcoin", "#Ethereum", "#Web3"],
+      "aggressive_set": ["#Crypto", "#Viral", "#ToTheMoon", "#FYP"],
+      "gem_set": ["#CryptoNews", "#DeFi", "#AltCoins"],
+      "platforms": ["TikTok", "YouTube", "Twitter"]
+    },
+    {
+      "hashtag": "#Motivation",
+      "count": 1500000,
+      "total_views": 2800000000,
+      "growth_7d": 21,
+      "opportunity_score": 52,
+      "safe_set": ["#Motivation", "#Mindset", "#Success", "#Goals"],
+      "aggressive_set": ["#Motivation", "#Viral", "#Inspire", "#FYP"],
+      "gem_set": ["#DailyMotivation", "#GrindMode", "#SuccessMindset"],
+      "platforms": ["TikTok", "Reels", "YouTube"]
+    },
+    {
+      "hashtag": "#Travel",
+      "count": 2200000,
+      "total_views": 4100000000,
+      "growth_7d": 38,
+      "opportunity_score": 61,
+      "safe_set": ["#Travel", "#Vacation", "#Adventure", "#Explore"],
+      "aggressive_set": ["#Travel", "#Viral", "#Wanderlust", "#FYP"],
+      "gem_set": ["#HiddenGems", "#BudgetTravel", "#SoloTravel"],
+      "platforms": ["TikTok", "Reels", "YouTube"]
+    },
+    {
+      "hashtag": "#Comedy",
+      "count": 4500000,
+      "total_views": 8900000000,
+      "growth_7d": 15,
+      "opportunity_score": 48,
+      "safe_set": ["#Comedy", "#Funny", "#Humor", "#Laugh"],
+      "aggressive_set": ["#Comedy", "#Viral", "#LOL", "#FYP"],
+      "gem_set": ["#StandupComedy", "#DarkHumor", "#Relatable"],
+      "platforms": ["TikTok", "Reels", "YouTube"]
+    },
+    {
+      "hashtag": "#DIY",
+      "count": 1100000,
+      "total_views": 2100000000,
+      "growth_7d": 52,
+      "opportunity_score": 70,
+      "safe_set": ["#DIY", "#Crafts", "#Handmade", "#Tutorial"],
+      "aggressive_set": ["#DIY", "#Viral", "#LifeHack", "#FYP"],
+      "gem_set": ["#DIYProjects", "#Upcycle", "#CraftTok"],
+      "platforms": ["TikTok", "YouTube", "Pinterest"]
+    },
+    {
+      "hashtag": "#Music",
+      "count": 3800000,
+      "total_views": 7200000000,
+      "growth_7d": 25,
+      "opportunity_score": 50,
+      "safe_set": ["#Music", "#Song", "#Singer", "#Musician"],
+      "aggressive_set": ["#Music", "#Viral", "#NewMusic", "#FYP"],
+      "gem_set": ["#IndieMusic", "#Unsigned", "#MusicProducer"],
+      "platforms": ["TikTok", "YouTube", "Spotify"]
+    },
+    {
+      "hashtag": "#Art",
+      "count": 1600000,
+      "total_views": 2900000000,
+      "growth_7d": 41,
+      "opportunity_score": 66,
+      "safe_set": ["#Art", "#Artist", "#Drawing", "#Painting"],
+      "aggressive_set": ["#Art", "#Viral", "#ArtTok", "#FYP"],
+      "gem_set": ["#DigitalArt", "#ArtProcess", "#Illustration"],
+      "platforms": ["TikTok", "Reels", "YouTube"]
+    },
+    {
+      "hashtag": "#Relationship",
+      "count": 980000,
+      "total_views": 1900000000,
+      "growth_7d": 67,
+      "opportunity_score": 73,
+      "safe_set": ["#Relationship", "#Love", "#Couple", "#Dating"],
+      "aggressive_set": ["#Relationship", "#Viral", "#CoupleGoals", "#FYP"],
+      "gem_set": ["#RelationshipAdvice", "#ToxicFree", "#HealthyRelationship"],
+      "platforms": ["TikTok", "Reels"]
+    }
+  ],
+  "snapshot_date": "2026-01-06",
+  "is_demo": true
+}

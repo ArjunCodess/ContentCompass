@@ -1,0 +1,66 @@
+{
+  "ideas": [
+    {
+      "day": "Monday",
+      "trend": "AI Reaction Videos",
+      "growth": "+234%",
+      "video_idea": "React to AI's funniest fails with your confused reaction faces",
+      "hook": "Wait... is that actually AI? 🤯",
+      "hashtag_set": ["#AIFails", "#TechComedy", "#AIReaction", "#TechSatire"],
+      "hashtag_type": "Hidden Gem",
+      "posting_time": "14:00 UTC",
+      "difficulty": "Easy"
+    },
+    {
+      "day": "Tuesday",
+      "trend": "Tech Satire Skits",
+      "growth": "+156%",
+      "video_idea": "POV: You're in a startup meeting where everyone speaks in buzzwords",
+      "hook": "Let's circle back and synergize our bandwidth...",
+      "hashtag_set": ["#TechSatire", "#StartupLife", "#Comedy", "#Corporate"],
+      "hashtag_type": "Aggressive",
+      "posting_time": "15:00 UTC",
+      "difficulty": "Medium"
+    },
+    {
+      "day": "Wednesday",
+      "trend": "POV Drama Series",
+      "growth": "+201%",
+      "video_idea": "Start a 3-part POV series about a workplace drama with a cliffhanger",
+      "hook": "They thought I didn't hear them, but I heard everything...",
+      "hashtag_set": ["#POVDrama", "#Series", "#Acting", "#Storytime"],
+      "hashtag_type": "Safe",
+      "posting_time": "18:00 UTC",
+      "difficulty": "Medium"
+    },
+    {
+      "day": "Thursday",
+      "trend": "Cooking with Chaos",
+      "growth": "+178%",
+      "video_idea": "Try to cook a viral recipe but let the chaos unfold naturally",
+      "hook": "This should be easy... right?",
+      "hashtag_set": ["#CookingFail", "#ChaoticCooking", "#Food", "#Viral"],
+      "hashtag_type": "Hidden Gem",
+      "posting_time": "12:00 UTC",
+      "difficulty": "Easy"
+    },
+    {
+      "day": "Friday",
+      "trend": "Mini Vlog Format",
+      "growth": "+112%",
+      "video_idea": "Capture the best 60 seconds of your week in an aesthetic mini vlog",
+      "hook": "This week in 60 seconds ✨",
+      "hashtag_set": ["#MiniVlog", "#WeekInMyLife", "#Aesthetic", "#Lifestyle"],
+      "hashtag_type": "Safe",
+      "posting_time": "16:00 UTC",
+      "difficulty": "Easy"
+    }
+  ],
+  "generated_for": {
+    "niche": "Tech & Comedy",
+    "platform": "TikTok",
+    "tone": "Funny"
+  },
+  "snapshot_date": "2026-01-06",
+  "is_demo": true
+}

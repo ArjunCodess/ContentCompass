@@ -1,0 +1,209 @@
+{
+  "results": 68,
+  "data": [
+    {
+      "id": "motivational",
+      "label": "Motivational",
+      "status": "stable",
+      "growth": 15
+    },
+    {
+      "id": "reddit-stories",
+      "label": "Reddit Stories",
+      "status": "stable",
+      "growth": 28
+    },
+    {
+      "id": "basketball",
+      "label": "Basketball",
+      "status": "stable",
+      "growth": 12
+    },
+    { "id": "crypto", "label": "Crypto", "status": "emerging", "growth": 145 },
+    { "id": "finance", "label": "Finance", "status": "stable", "growth": 34 },
+    { "id": "anime", "label": "Anime", "status": "stable", "growth": 56 },
+    { "id": "gaming", "label": "Gaming", "status": "stable", "growth": 42 },
+    {
+      "id": "formula-one",
+      "label": "Formula One",
+      "status": "stable",
+      "growth": 38
+    },
+    {
+      "id": "us-politics",
+      "label": "US Politics",
+      "status": "cooling",
+      "growth": -12
+    },
+    {
+      "id": "horror-scary",
+      "label": "Horror & Scary",
+      "status": "stable",
+      "growth": 45
+    },
+    {
+      "id": "brainrot",
+      "label": "Brainrot",
+      "status": "emerging",
+      "growth": 234
+    },
+    {
+      "id": "celebrities",
+      "label": "Celebrities",
+      "status": "stable",
+      "growth": 23
+    },
+    {
+      "id": "ai-vlogs",
+      "label": "AI Vlogs",
+      "status": "emerging",
+      "growth": 312
+    },
+    {
+      "id": "podcast-clips",
+      "label": "Podcast Clips",
+      "status": "stable",
+      "growth": 67
+    },
+    { "id": "asmr", "label": "ASMR", "status": "stable", "growth": 18 },
+    { "id": "beauty", "label": "Beauty", "status": "stable", "growth": 25 },
+    { "id": "fitness", "label": "Fitness", "status": "stable", "growth": 34 },
+    {
+      "id": "food",
+      "label": "Food & Cooking",
+      "status": "stable",
+      "growth": 29
+    },
+    { "id": "travel", "label": "Travel", "status": "stable", "growth": 38 },
+    { "id": "comedy", "label": "Comedy", "status": "stable", "growth": 15 },
+    { "id": "music", "label": "Music", "status": "stable", "growth": 25 },
+    { "id": "dance", "label": "Dance", "status": "stable", "growth": 12 },
+    {
+      "id": "diy-crafts",
+      "label": "DIY & Crafts",
+      "status": "stable",
+      "growth": 52
+    },
+    {
+      "id": "pets",
+      "label": "Pets & Animals",
+      "status": "stable",
+      "growth": 23
+    },
+    {
+      "id": "tech-review",
+      "label": "Tech Reviews",
+      "status": "emerging",
+      "growth": 89
+    },
+    {
+      "id": "education",
+      "label": "Education",
+      "status": "stable",
+      "growth": 45
+    },
+    {
+      "id": "true-crime",
+      "label": "True Crime",
+      "status": "cooling",
+      "growth": -8
+    },
+    { "id": "fashion", "label": "Fashion", "status": "stable", "growth": 19 },
+    { "id": "sports", "label": "Sports", "status": "stable", "growth": 32 },
+    {
+      "id": "parenting",
+      "label": "Parenting",
+      "status": "stable",
+      "growth": 28
+    }
+  ],
+  "niche_trends": {
+    "ai-vlogs": [
+      {
+        "trend_name": "AI-Generated Story Vlogs",
+        "trend_description": "Creators are using AI video generators like Veo 3 to create cinematic story vlogs with AI avatars.",
+        "average_views": 890000
+      },
+      {
+        "trend_name": "Day in the Life of AI Characters",
+        "trend_description": "Fictional AI characters living normal lives, created entirely with generative AI tools.",
+        "average_views": 456000
+      },
+      {
+        "trend_name": "AI vs Human Art Comparisons",
+        "trend_description": "Side-by-side comparisons of AI-generated art vs human-created content, sparking debates.",
+        "average_views": 234000
+      }
+    ],
+    "crypto": [
+      {
+        "trend_name": "Bitcoin ETF Analysis",
+        "trend_description": "Deep dives into Bitcoin ETF performance and predictions for 2026.",
+        "average_views": 567000
+      },
+      {
+        "trend_name": "Altcoin Season Predictions",
+        "trend_description": "Technical analysis predicting which altcoins will outperform in the next bull run.",
+        "average_views": 345000
+      },
+      {
+        "trend_name": "DeFi Yield Strategies",
+        "trend_description": "Step-by-step guides on maximizing yields in decentralized finance protocols.",
+        "average_views": 189000
+      }
+    ],
+    "brainrot": [
+      {
+        "trend_name": "Skibidi Toilet Lore Deep Dives",
+        "trend_description": "Serious analysis of Skibidi Toilet storylines and character developments.",
+        "average_views": 1200000
+      },
+      {
+        "trend_name": "Italian Chaos Compilations",
+        "trend_description": "Chaotic Italian-themed content with absurd humor and unexpected twists.",
+        "average_views": 890000
+      },
+      {
+        "trend_name": "Sigma Edits with Ridiculous Music",
+        "trend_description": "Over-the-top sigma male edits set to increasingly absurd music choices.",
+        "average_views": 678000
+      }
+    ],
+    "anime": [
+      {
+        "trend_name": "Demon Slayer Character Analysis",
+        "trend_description": "In-depth character breakdowns and power scaling discussions.",
+        "average_views": 456000
+      },
+      {
+        "trend_name": "Anime Cosplay Transformations",
+        "trend_description": "Before/after cosplay transformation videos showcasing detailed costumes.",
+        "average_views": 345000
+      },
+      {
+        "trend_name": "Underrated Anime Recommendations",
+        "trend_description": "Hidden gem anime recommendations that deserve more attention.",
+        "average_views": 234000
+      }
+    ],
+    "tech-review": [
+      {
+        "trend_name": "AI Tool Reviews and Tutorials",
+        "trend_description": "Reviews and tutorials for the latest AI productivity and creative tools.",
+        "average_views": 567000
+      },
+      {
+        "trend_name": "Tech Satire and Parodies",
+        "trend_description": "Comedy content poking fun at tech culture and Silicon Valley stereotypes.",
+        "average_views": 890000
+      },
+      {
+        "trend_name": "Budget Tech Alternatives",
+        "trend_description": "Finding affordable alternatives to expensive tech products.",
+        "average_views": 345000
+      }
+    ]
+  },
+  "snapshot_date": "2026-01-06",
+  "is_demo": true
+}
